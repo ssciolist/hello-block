@@ -1,8 +1,14 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:700');
 
 $title-font: 'Montserrat', sans-serif;
+$main-green: #3F9476;
 
 .title {
   font-family: $title-font;
   font-size: 50px;
+  color: white;
 }
+
+.navbar-default {
+  background-color: $main-green;
+ }
