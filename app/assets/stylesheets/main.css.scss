@@ -9,6 +9,13 @@ $main-green: #3F9476;
   color: white;
 }
 
+.navbar-header {
+  img {
+    padding-left: 25px;
+    height: 80px;
+  }
+}
+
 .navbar-default {
   background-color: $main-green;
  }
@@ -18,4 +25,11 @@ $main-green: #3F9476;
   width: 100%;
   left: 0;
   text-align: center;
+}
+
+.navbar-right {
+  .fa-2x {
+    padding-top: 10px;
+    color: white;
+  }
 }
