@@ -12,3 +12,10 @@ $main-green: #3F9476;
 .navbar-default {
   background-color: $main-green;
  }
+
+.navbar-center {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  text-align: center;
+}
