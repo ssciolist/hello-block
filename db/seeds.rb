@@ -9,7 +9,7 @@
 CSV.foreach('./data/permit-type-legend.csv', headers: true, header_converters: :symbol) do |row|
   PermitType.create!(id:     row[:stat_code],
                      name:   row[:name],
-                     type:   row[:type],
-                     type_2: row[:type_2],
-                     type_3: row[:type_3])
+                     p_type:   row[:p_type],
+                     p_type_2: row[:p_type_2],
+                     p_type_3: row[:p_type_3])
 end

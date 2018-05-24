@@ -33,9 +33,9 @@ ActiveRecord::Schema.define(version: 2018_05_24_185754) do
 
   create_table "permit_types", force: :cascade do |t|
     t.string "name"
-    t.string "type"
-    t.string "type_2"
-    t.string "type_3"
+    t.string "p_type"
+    t.string "p_type_2"
+    t.string "p_type_3"
   end
 
   add_foreign_key "building_permits", "permit_types"
