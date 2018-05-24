@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_24_135849) do
+ActiveRecord::Schema.define(version: 2018_05_24_185754) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,11 +26,16 @@ ActiveRecord::Schema.define(version: 2018_05_24_135849) do
     t.string "owner_name"
     t.string "contractor_name"
     t.bigint "permit_type_id"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["permit_type_id"], name: "index_building_permits_on_permit_type_id"
   end
 
   create_table "permit_types", force: :cascade do |t|
     t.string "name"
+    t.string "type"
+    t.string "type_2"
+    t.string "type_3"
   end
 
   add_foreign_key "building_permits", "permit_types"
