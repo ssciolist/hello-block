@@ -8,7 +8,7 @@ require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
-    with.testframework :rspec
+    with.test_framework :rspec
     with.library :rails
   end
 end

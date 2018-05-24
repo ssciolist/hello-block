@@ -1,4 +1,4 @@
-class Permit < ApplicationRecord
+class BuildingPermit < ApplicationRecord
   belongs_to :permit_type
 
   validates_presence_of :date_issued, :permit_number, :address,
