@@ -27,3 +27,6 @@
 
 # Keep CSVs off of Github
 /data/*
+
+# Ignore application configuration
+/config/application.yml

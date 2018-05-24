@@ -76,6 +76,8 @@ GEM
     erubi (1.7.1)
     execjs (2.7.0)
     ffi (1.9.23)
+    figaro (1.1.1)
+      thor (~> 0.14)
     font-awesome-sass (5.0.13)
       sassc (>= 1.11)
     geocoder (1.4.8)
@@ -219,6 +221,7 @@ DEPENDENCIES
   byebug
   capybara
   coffee-rails (~> 4.2)
+  figaro
   font-awesome-sass
   geocoder
   jbuilder (~> 2.5)
