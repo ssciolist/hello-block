@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:700');
+@import url('https://fonts.googleapis.com/css?family=Yrsa:700');
 
 $title-font: 'Montserrat', sans-serif;
+$header-font: 'Yrsa', serif;
 $main-green: #3F9476;
 
 .title {
@@ -58,4 +60,10 @@ footer {
     position: relative;
     top: -45px;
   }
+}
+
+h1 {
+  font-family: $header-font;
+  text-align: center;
+  font-size: 60px;
 }
