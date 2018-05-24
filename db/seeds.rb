@@ -26,4 +26,5 @@ CSV.foreach('./data/April-2015_test.csv', headers: false) do |row|
                          contractor_name: row[20],
                          permit_type_id:  row[22]
                        )
+  puts row[0]
 end
