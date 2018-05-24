@@ -78,6 +78,7 @@ GEM
     ffi (1.9.23)
     font-awesome-sass (5.0.13)
       sassc (>= 1.11)
+    geocoder (1.4.8)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     i18n (1.0.1)
@@ -219,6 +220,7 @@ DEPENDENCIES
   capybara
   coffee-rails (~> 4.2)
   font-awesome-sass
+  geocoder
   jbuilder (~> 2.5)
   jquery-rails
   launchy
