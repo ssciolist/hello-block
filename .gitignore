@@ -24,3 +24,9 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# Keep CSVs off of Github
+/data/*
+
+# Ignore application configuration
+/config/application.yml
