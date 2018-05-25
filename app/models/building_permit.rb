@@ -10,7 +10,7 @@ class BuildingPermit < ApplicationRecord
     "#{address}, Denver Colorado"
   end
 
-  def self.construction_value
-    self.search_results.sum(:valuation)
+  def self.search_result(days, address, distance)
+    where(date_issued: (DateTime.now - days.to_i)..(DateTime.now)).near(address, distance)
   end
 end
