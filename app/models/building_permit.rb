@@ -9,4 +9,8 @@ class BuildingPermit < ApplicationRecord
   def full_street_address
     "#{address}, Denver Colorado"
   end
+
+  def self.search_result(days, address, distance)
+    where(date_issued: (DateTime.now - days.to_i)..(DateTime.now)).near(address, distance)
+  end
 end

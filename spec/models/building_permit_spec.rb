@@ -14,4 +14,9 @@ RSpec.describe BuildingPermit, type: :model do
   context 'relationships' do
     it { should belong_to :permit_type}
   end
+
+  context 'class methods' do
+    context '.search_results' do
+    end
+  end
 end
