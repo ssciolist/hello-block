@@ -66,4 +66,11 @@ h1 {
   font-family: $header-font;
   text-align: center;
   font-size: 60px;
+  padding-top: 1%;
+  padding-bottom: 4%;
+}
+
+.search-result-table {
+  width: 90%;
+  margin: 0 auto;
 }

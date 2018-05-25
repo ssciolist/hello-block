@@ -2,7 +2,7 @@
    was planned within <%= pluralize(@distance, 'mile') %><br>
     in the past <%= pluralize(@days, 'day') %></h1>
 
-<table class="table">
+<table class="table search-result-table">
   <tr>
     <th>Date Issued</th>
     <th>Address</th>
@@ -17,7 +17,7 @@
     <td><%= permit.date_issued %></td>
     <td><%= permit.address %></td>
     <td><%= permit.building_class %></td>
-    <td><%= permit.valuation %></td>
+    <td><%= number_to_currency(permit.valuation) %></td>
     <td><%= permit.owner_name %></td>
     <td><%= permit.contractor_name %></td>
     <td><%= permit.permit_type.name %></td>
