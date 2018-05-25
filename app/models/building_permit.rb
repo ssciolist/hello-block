@@ -10,10 +10,6 @@ class BuildingPermit < ApplicationRecord
     "#{address}, Denver Colorado"
   end
 
-  def self.search_results(search, distance = 1)
-    near("#{search}", distance)
-  end
-
   def self.construction_value
     self.search_results.sum(:valuation)
   end
