@@ -14,7 +14,10 @@ CSV.foreach('./data/permit-type-legend.csv', headers: true, header_converters: :
                      p_type_3: row[:p_type_3])
 end
 
+PermitType.create!(id: 999, name: "(Not Specified)", p_type: "(Not Specified)")
+
 CSV.foreach('./data/April-2015_test.csv', headers: false) do |row|
+  NA = "(Not specified)"
   BuildingPermit.create!(date_issued:     row[0],
                          permit_number:   row[3],
                          address:         row[6],
