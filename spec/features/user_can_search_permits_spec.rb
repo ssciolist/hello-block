@@ -44,8 +44,8 @@ describe 'As a visitor,' do
       commercial_type = PermitType.create(name: 'Commercial', p_type: "008")
       create(:building_permit, permit_type: single_type, date_issued: Time.now)
       create(:building_permit, permit_type: single_type, date_issued: Time.now)
-      create(:building_permit, permit_type: commercial_type, address: '1463 Jasmine Street', date_issued:(Time.now - 900000))
-      create(:building_permit, permit_type: commercial_type, address: '1463 Jasmine Street', date_issued:(Time.now - 900000))
+      commercial_permit = create(:building_permit, permit_type: commercial_type, address: '1463 Jasmine Street', date_issued:(Time.now - 900000))
+      commercial_permit_2 = create(:building_permit, permit_type: commercial_type, address: '1463 Jasmine Street', date_issued:(Time.now - 900000))
 
       visit '/'
 
@@ -61,7 +61,8 @@ describe 'As a visitor,' do
       click_on 'Search again'
 
       expect(page).to have_css('.building_permit', count: 2)
-      expect(page).to_not have_content('Commercial')
+      expect(page).to_not have_content(commercial_permit.permit_type.name)
+      expect(page).to_not have_content(commercial_permit_2.permit_type.name)
       expect(page).to_not have_content('1463 Jasmine Street')
 
     end
