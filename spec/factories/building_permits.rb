@@ -6,5 +6,7 @@ FactoryBot.define do
     valuation { rand(100..1000) }
     owner_name { Faker::Name.name}
     contractor_name { Faker::Company.bs}
+
+    permit_type
   end
 end

@@ -23,9 +23,9 @@ describe 'As a visitor,' do
 
   describe 'when I am on a search result page' do
     it 'gives me options to change my search' do
-      type = PermitType.create(name: "New home", p_type: "003")
-      permit = create(:building_permit, permit_type: type)
-      binding.pry
+      # type = PermitType.create(name: "New home", p_type: "003")
+      permit = create(:building_permit)
+
       visit '/'
 
       fill_in 'search', with: '2035 N JASMINE ST, Denver Colorado'
