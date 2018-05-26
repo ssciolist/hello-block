@@ -41,7 +41,7 @@ describe 'As a visitor,' do
 
     it 'lets me do another search' do
       single_type = PermitType.create(name: 'Single family, detached', p_type: "003")
-      commercial_type = PermitType.create(name: 'Commercial', p_type: "008")
+      commercial_type = PermitType.create(name: 'Two family dwellings', p_type: "008")
       create(:building_permit, permit_type: single_type, date_issued: Time.now)
       create(:building_permit, permit_type: single_type, date_issued: Time.now)
       create(:building_permit, permit_type: commercial_type, address: '1463 Jasmine Street', date_issued:(Time.now - 900000))
@@ -59,7 +59,7 @@ describe 'As a visitor,' do
       fill_in 'distance', with: 0.5
       fill_in 'days', with: 2
       check 'Single family, detached'
-  
+
       click_on 'Search again'
 
       expect(page).to have_css('.building_permit', count: 2)

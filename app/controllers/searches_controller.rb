@@ -6,5 +6,7 @@ class SearchesController < ApplicationController
     @value = @search.sum(:valuation)
     @distance = params[:distance]
     @days = params[:days]
+    @permit_types = PermitType.all.pluck(:name)
+
   end
 end

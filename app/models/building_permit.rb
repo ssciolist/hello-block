@@ -14,9 +14,9 @@ class BuildingPermit < ApplicationRecord
     where(date_issued: (DateTime.now - days.to_i)..(DateTime.now)).near(address, distance)
   end
 
-  def self.permit_types_near(address)
-    select('permit_types.name')
-    .near('address')
-    .joins(:permit_type)
-  end
+  # def self.permit_types_near(address)
+  #   select('permit_types.name')
+  #   .near('address')
+  #   .joins(:permit_type)
+  # end
 end

@@ -14,7 +14,7 @@
 #                      p_type_3: row[:p_type_3])
 # end
 
-Dir.glob('data/batch_5/*').each do |file|
+Dir.glob('data/batch_6/*').each do |file|
   CSV.foreach("./#{file}", headers: false) do |row|
     permit_na = "999"
     na = "(Not specified)"
