@@ -45,6 +45,5 @@ Dir.glob('data/batch_2/*').each do |file|
                                                 permit_na
                                              end)
                          )
-    puts row[0]
   end
 end
