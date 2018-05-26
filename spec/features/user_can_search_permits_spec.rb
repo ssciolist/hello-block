@@ -7,7 +7,7 @@ describe 'As a visitor,' do
         permit = PermitType.create(name: "New home", p_type: "003")
         BuildingPermit.create(date_issued: "2018-05-22 11:38:17", permit_number: "24", address: "2035 North Jasmine Street", valuation: 770689, fee: 4, owner_name: "JASMINE", contractor_name: "besine", permit_type: permit, latitude: 39.748276, longitude: -104.918953)
         BuildingPermit.create(date_issued: "2018-05-22 11:38:17", permit_number: "324", address: "2060 North Jasmine Street", valuation: 1, fee: 34, owner_name: "JASMINE", contractor_name: "besine", permit_type: permit, latitude: 39.7455399339223, longitude: -104.92825913894)
-
+binding.pry
         visit '/'
 
         fill_in 'search', with: '2035 N JASMINE ST, Denver Colorado'
@@ -31,11 +31,10 @@ describe 'As a visitor,' do
       fill_in 'search', with: '2035 N JASMINE ST, Denver Colorado'
       click_on 'Search'
 
-      expect(page).to have days number selector
-      expect(page).to have miles number selector
-      expect(page).to have permit type selector
-
-
+      expect(page).to has_select?('search[days]')
+      expect(page).to has_select?('search[miles]')
+      expect(page).to have_field('Single family, detached', checked: false)
+      expect(page).to have_field('Two family dwellings', checked: false)
 
     end
   end
