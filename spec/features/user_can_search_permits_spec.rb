@@ -58,6 +58,7 @@ describe 'As a visitor,' do
       fill_in 'distance', with: 0.5
       fill_in 'days', with: 2
       check 'Single family, detached'
+      click_on 'Search again'
 
       expect(page).to have_css('.building_permit', count: 2)
       expect(page).to_not have_content('Commercial')
