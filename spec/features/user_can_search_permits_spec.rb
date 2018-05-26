@@ -7,7 +7,6 @@ describe 'As a visitor,' do
         permit = PermitType.create(name: "New home", p_type: "003")
         BuildingPermit.create(date_issued: "2018-05-22 11:38:17", permit_number: "24", address: "2035 North Jasmine Street", valuation: 770689, fee: 4, owner_name: "JASMINE", contractor_name: "besine", permit_type: permit, latitude: 39.748276, longitude: -104.918953)
         BuildingPermit.create(date_issued: "2018-05-22 11:38:17", permit_number: "324", address: "2060 North Jasmine Street", valuation: 1, fee: 34, owner_name: "JASMINE", contractor_name: "besine", permit_type: permit, latitude: 39.7455399339223, longitude: -104.92825913894)
-        near = BuildingPermit.near('2035 N JASMINE ST, Denver Colorado')
 
         visit '/'
 
@@ -19,6 +18,13 @@ describe 'As a visitor,' do
         expect(page).to have_content('in the past 30 days')
         expect(page).to have_css('.building_permit', count: 2)
       end
+    end
+  end
+
+  describe 'when I am on a search result page' do
+    it 'gives me options to change my search' do
+      permits = createlist permits
+
     end
   end
 end

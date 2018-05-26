@@ -6,15 +6,15 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-CSV.foreach('./data/permit-type-legend.csv', headers: true, header_converters: :symbol) do |row|
-  PermitType.create(id:     row[:stat_code],
-                     name:   row[:name],
-                     p_type:   row[:p_type],
-                     p_type_2: row[:p_type_2],
-                     p_type_3: row[:p_type_3])
-end
+# CSV.foreach('./data/permit-type-legend.csv', headers: true, header_converters: :symbol) do |row|
+#   PermitType.create(id:     row[:stat_code],
+#                      name:   row[:name],
+#                      p_type:   row[:p_type],
+#                      p_type_2: row[:p_type_2],
+#                      p_type_3: row[:p_type_3])
+# end
 
-Dir.glob('data/base/*').each do |file|
+Dir.glob('data/batch_2/*').each do |file|
   CSV.foreach("./#{file}", headers: false) do |row|
     permit_na = "999"
     na = "(Not specified)"
