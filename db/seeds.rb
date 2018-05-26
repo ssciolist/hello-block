@@ -23,7 +23,11 @@ Dir.glob('data/base/*').each do |file|
                            address:         row[6],
                            sublocation:     row[8],
                            building_class:  row[11],
-                           valuation:       row[15],
+                           valuation:       (if row[15].present?
+                                                row[15]
+                                             else
+                                                0
+                                             end),
                            fee:             row[16],
                            owner_name:      (if row[18].present?
                                                 row[18]

@@ -4,7 +4,7 @@ class BuildingPermit < ApplicationRecord
   after_validation :geocode
 
   validates_presence_of :date_issued, :permit_number, :address,
-                        :valuation, :fee, :owner_name, :contractor_name
+                        :valuation, :owner_name, :contractor_name
 
   def full_street_address
     "#{address}, Denver Colorado"
