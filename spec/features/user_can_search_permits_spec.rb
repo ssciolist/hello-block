@@ -23,7 +23,19 @@ describe 'As a visitor,' do
 
   describe 'when I am on a search result page' do
     it 'gives me options to change my search' do
-      permits = createlist permits
+      type = PermitType.create(name: "New home", p_type: "003")
+      permit = create(:building_permit, permit_type: type)
+      binding.pry
+      visit '/'
+
+      fill_in 'search', with: '2035 N JASMINE ST, Denver Colorado'
+      click_on 'Search'
+
+      expect(page).to have days number selector
+      expect(page).to have miles number selector
+      expect(page).to have permit type selector
+
+
 
     end
   end
