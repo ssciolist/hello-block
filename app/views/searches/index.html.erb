@@ -10,6 +10,8 @@
 
       <%= check_box_tag(:permit_type, params[:permit_type]) %>
       <%= label_tag(:permit_type, 'Single family, detached') %>
+      <%= check_box_tag(:permit_type, params[:permit_type]) %>
+      <%= label_tag(:permit_type, 'Commercial') %>
       <%= submit_tag 'Search again', :name => nil %>
   <% end %>
 

@@ -44,25 +44,26 @@ describe 'As a visitor,' do
       commercial_type = PermitType.create(name: 'Commercial', p_type: "008")
       create(:building_permit, permit_type: single_type, date_issued: Time.now)
       create(:building_permit, permit_type: single_type, date_issued: Time.now)
-      commercial_permit = create(:building_permit, permit_type: commercial_type, address: '1463 Jasmine Street', date_issued:(Time.now - 900000))
-      commercial_permit_2 = create(:building_permit, permit_type: commercial_type, address: '1463 Jasmine Street', date_issued:(Time.now - 900000))
+      create(:building_permit, permit_type: commercial_type, address: '1463 Jasmine Street', date_issued:(Time.now - 900000))
+      create(:building_permit, permit_type: commercial_type, address: '1463 Jasmine Street', date_issued:(Time.now - 900000))
+      commercial_permit = create(:building_permit, permit_type: commercial_type)
 
       visit '/'
 
       address = '2035 N JASMINE ST, Denver Colorado'
       fill_in 'search', with: address
       click_on 'Search'
-      expect(page).to have_css('.building_permit', count: 4)
+      expect(page).to have_css('.building_permit', count: 5)
 
       fill_in 'search', with: address
       fill_in 'distance', with: 0.5
       fill_in 'days', with: 2
       check 'Single family, detached'
+  
       click_on 'Search again'
 
       expect(page).to have_css('.building_permit', count: 2)
       expect(page).to_not have_content(commercial_permit.permit_type.name)
-      expect(page).to_not have_content(commercial_permit_2.permit_type.name)
       expect(page).to_not have_content('1463 Jasmine Street')
 
     end
