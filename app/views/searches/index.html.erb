@@ -32,4 +32,7 @@
     <td><%= permit.permit_type.name %></td>
   </tr>
   <% end %>
+  <% if current_user %>
+    <%= button_to "Save this search", root_path(current_url: request.original_url, days: @days, distance: @distance, address: @address) %>
+  <% end %>
 </table>
