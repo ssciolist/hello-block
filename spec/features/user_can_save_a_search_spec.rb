@@ -21,8 +21,19 @@ describe "As a logged in user" do
   describe 'when I make a search' do
     describe 'and I click save this search' do
       it 'should create a link to this search on my profile page' do
+        # user = create(:user)
+        # allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
         user = create(:user)
-        allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+        visit root_path
+        click_on 'Log in'
+
+        fill_in 'user[email]', with: user.email
+        fill_in 'user[password]', with: user.password
+
+        within('.new_user') do
+          click_on 'Log in'
+        end
 
         type = PermitType.create(name: 'Single family, detached', p_type: "003")
         permit = create_list(:building_permit, 4, permit_type: type)
@@ -36,7 +47,10 @@ describe "As a logged in user" do
         expect(page).to have_button('Save this search')
         click_on 'Save this search'
 
-        expect(current_path).to eq(user_path(user))
+        expect(current_path).to eq(searches_path)
+        expect(page).to have_content('Added to your saved searches.')
+
+        visit user_path(user)
         expect(page).to have_link('Permits within 1 mile of 2035 N JASMINE ST within the last 30 days')
       end
     end

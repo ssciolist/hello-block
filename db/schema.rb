@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_27_142121) do
+ActiveRecord::Schema.define(version: 2018_05_27_175006) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,14 @@ ActiveRecord::Schema.define(version: 2018_05_27_142121) do
     t.string "p_type_3"
   end
 
+  create_table "saved_searches", force: :cascade do |t|
+    t.string "current_url"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_saved_searches_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -60,4 +68,5 @@ ActiveRecord::Schema.define(version: 2018_05_27_142121) do
   end
 
   add_foreign_key "building_permits", "permit_types"
+  add_foreign_key "saved_searches", "users"
 end
