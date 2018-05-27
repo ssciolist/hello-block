@@ -50,7 +50,8 @@ describe "As a logged in user" do
         expect(current_path).to eq(searches_path)
         expect(page).to have_content('Added to your saved searches.')
 
-        visit user_path(user)
+        visit root_path
+        click_on 'My account'
 
         expect(page).to have_content('Permits within 1 mile of 2035 N JASMINE ST within the last 30 days')
         expect(page).to have_link('Results')

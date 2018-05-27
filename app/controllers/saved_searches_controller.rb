@@ -4,7 +4,7 @@ class SavedSearchesController < ApplicationController
   def create
     saved_search = SavedSearch.new(current_url: params[:current_url], user_id: current_user.id)
     if saved_search.save
-      flash[:success] = 'Added to your saved searches.'
+      flash[:success] = "Added to your saved searches. See #{view_context.link_to('all your searches', user_path(current_user))}".html_safe
       redirect_to "#{saved_search.current_url}"
     else
       flash[:warn] = 'Sorry, something went wrong'
