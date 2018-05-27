@@ -7,7 +7,7 @@ describe 'As a visitor' do
       it 'creates a new account' do
         visit root_path
         click_on "Sign up"
-        save_and_open_page
+
         fill_in "user[email]", with: "PaulKarolyi@gmail.com"
         fill_in "user[password]", with: "Karolyi"
         fill_in "user[password_confirmation]", with: "Karolyi"
@@ -18,19 +18,28 @@ describe 'As a visitor' do
         expect(page).to_not have_content("Login")
         expect(page).to have_content("Logout")
       end
+    end
+  end
+end
 
-      it 'passwords must match' do
+describe 'As a user' do
+  describe 'when I visit the homepage' do
+    describe 'and I click on log in,' do
+      it 'I can sign in' do
+        user = create(:user)
+        binding.pry
         visit root_path
-        click_on "Create Account"
-        fill_in "user[username]", with: "Batman"
-        fill_in "user[password]", with: "Robin"
-        fill_in "user[confirm_password]", with: "Williams"
-        click_on "Sign Up"
+        click_on "Log in"
 
-        expect(current_path).to eq(new_user_path)
-        expect(page).to have_content("Passwords do not match")
-        expect(page).to have_content("Login")
-        expect(page).to_not have_content("Logout")
+        fill_in "user[email]", with: "PaulKarolyi@gmail.com"
+        fill_in "user[password]", with: "Karolyi"
+        fill_in "user[password_confirmation]", with: "Karolyi"
+        click_on ""
+
+        expect(current_path).to eq(dashboard_path)
+        expect(page).to have_content("Welcome! You have signed in successfully.")
+        expect(page).to_not have_content("Login")
+        expect(page).to have_content("Logout")
       end
     end
   end
