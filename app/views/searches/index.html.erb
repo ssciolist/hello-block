@@ -8,10 +8,6 @@
       <%= number_field_tag :distance, params[:distance], in: 0.0..10.0, step: 0.5 %>
       <%= number_field_tag :days, params[:days], in: 1..365, step: 1 %>
 
-      <%= check_box_tag(:permit_type, params[:permit_type]) %>
-      <%= label_tag(:permit_type, 'Single family, detached') %>
-      <%= check_box_tag(:permit_type, params[:permit_type]) %>
-      <%= label_tag(:permit_type, 'Commercial') %>
       <%= submit_tag 'Search again', :name => nil %>
   <% end %>
 
