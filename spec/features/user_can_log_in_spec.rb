@@ -27,19 +27,21 @@ describe 'As a user' do
     describe 'and I click on log in,' do
       it 'I can sign in' do
         user = create(:user)
-        binding.pry
+
         visit root_path
         click_on "Log in"
 
-        fill_in "user[email]", with: "PaulKarolyi@gmail.com"
-        fill_in "user[password]", with: "Karolyi"
-        fill_in "user[password_confirmation]", with: "Karolyi"
-        click_on ""
+        fill_in "user[email]", with: user.email
+        fill_in "user[password]", with: user.password
 
-        expect(current_path).to eq(dashboard_path)
-        expect(page).to have_content("Welcome! You have signed in successfully.")
+        within('.new_user') do
+          click_on "Log in"
+        end
+
+        expect(current_path).to eq(root_path)
+        expect(page).to have_content("Signed in successfully.")
         expect(page).to_not have_content("Login")
-        expect(page).to have_content("Logout")
+        expect(page).to have_content("Log out")
       end
     end
   end
