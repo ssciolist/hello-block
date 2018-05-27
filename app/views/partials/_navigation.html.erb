@@ -17,6 +17,7 @@
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="far fa-user fa-2x"></i><span class="caret"></span></a>
         <ul class="dropdown-menu">
           <% if user_signed_in? %>
+            <li><%= link_to "My account", user_path(current_user) %></li>
             <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
           <% else %>
             <li><%= link_to "Log in", new_user_session_path %></li>
