@@ -14,6 +14,13 @@
     <div class='container'>
       <% if notice %><div class="alert alert-info"><%= notice %></div><% end %>
       <% if alert %><div class="alert alert-warning"><%= alert %></div><% end %>
+      <% flash.each do |message_type, message| %>
+        <% if message_type == "success" %>
+          <div class="success"><%= sanitize(message) %></div>
+        <% else %>
+          <div class="danger"><%= message %></div>
+        <% end %>
+      <% end %>
       </div>
     <%= yield %>
     <%= render 'partials/footer' %>
