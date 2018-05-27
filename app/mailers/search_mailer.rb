@@ -1,0 +1,2 @@
+class SearchMailer < ApplicationMailer
+end
