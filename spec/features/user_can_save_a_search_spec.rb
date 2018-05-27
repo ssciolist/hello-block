@@ -1,0 +1,44 @@
+require 'rails_helper'
+
+describe "As a visitor" do
+  describe 'when I make a search' do
+    it 'I should not see an option to save my search' do
+      type = PermitType.create(name: 'Single family, detached', p_type: "003")
+      permit = create_list(:building_permit, 4, permit_type: type)
+
+      visit '/'
+
+      address = '2035 N JASMINE ST, Denver Colorado'
+      fill_in 'search', with: address
+      click_on 'Search'
+
+      expect(page).to_not have_button('Save this search')
+    end
+  end
+end
+
+describe "As a logged in user" do
+  describe 'when I make a search' do
+    describe 'and I click save this search' do
+      it 'should create a link to this search on my profile page' do
+        user = create(:user)
+        allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+        type = PermitType.create(name: 'Single family, detached', p_type: "003")
+        permit = create_list(:building_permit, 4, permit_type: type)
+
+        visit '/'
+
+        address = '2035 N JASMINE ST, Denver Colorado'
+        fill_in 'search', with: address
+        click_on 'Search'
+
+        expect(page).to have_button('Save this search')
+        click_on 'Save this search'
+
+        expect(current_path).to eq(user_path(user))
+        expect(page).to have_link('Permits within 1 mile of 2035 N JASMINE ST within the last 30 days')
+      end
+    end
+  end
+end
