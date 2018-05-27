@@ -27,6 +27,11 @@ describe 'As a user' do
         visit root_path
 
         click_on 'Log in'
+        click_on 'Sign in with Google'
+
+        expect(page).to have_content('Signed in successfully.')
+        expect(page).to_not have_content('Log in')
+        expect(page).to have_content('Log out')
       end
     end
 

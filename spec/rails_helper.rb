@@ -25,6 +25,23 @@ DatabaseCleaner.strategy = :truncation
     end
 end
 
+def stub_omniauth
+  OmniAuth.config.test_mode = true
+  OmniAuth.config.mock_auth[:google] = OmniAuth::AuthHash.new ({
+    provider: 'google',
+    extra: {
+      raw_info: {
+        user_id: '1234',
+        screen_name: 'ssciolist'
+      }
+    },
+    credentials: {
+      token: 'pizza',
+      secret: 'secretpizza'
+    }
+    })
+end
+
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
 # run as spec files by default. This means that files in spec/support that end
