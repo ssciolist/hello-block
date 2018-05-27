@@ -4,13 +4,20 @@ class BuildingPermit < ApplicationRecord
   after_validation :geocode
 
   validates_presence_of :date_issued, :permit_number, :address,
-                        :valuation, :fee, :owner_name, :contractor_name
+                        :valuation, :owner_name, :contractor_name
 
   def full_street_address
     "#{address}, Denver Colorado"
   end
 
   def self.search_result(days, address, distance)
-    where(date_issued: (DateTime.now - days.to_i)..(DateTime.now)).near(address, distance)
+    where(date_issued: (DateTime.now - days.to_i)..(DateTime.now))
+    .near(address, distance)
   end
+
+  # def self.permit_types_near(address)
+  #   select('permit_types.name')
+  #   .near('address')
+  #   .joins(:permit_type)
+  # end
 end

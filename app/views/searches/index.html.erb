@@ -2,6 +2,15 @@
    was planned within <%= pluralize(@distance, 'mile') %><br>
     in the past <%= pluralize(@days, 'day') %></h1>
 
+<h3>Refine your search:</h3>
+  <%= form_tag(searches_path, :method => 'get') do %>
+      <%= text_field_tag :search, params[:search], placeholder: @address %>
+      <%= number_field_tag :distance, params[:distance], in: 0.0..10.0, step: 0.5 %>
+      <%= number_field_tag :days, params[:days], in: 1..365, step: 1 %>
+
+      <%= submit_tag 'Search again', :name => nil %>
+  <% end %>
+
 <table class="table search-result-table">
   <tr>
     <th>Date Issued</th>
