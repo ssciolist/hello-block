@@ -32,7 +32,8 @@ def stub_omniauth
     extra: {
       raw_info: {
         user_id: '1234',
-        screen_name: 'ssciolist'
+        screen_name: 'ssciolist',
+        email: 'ssciolist@gmail.com'
       }
     },
     credentials: {
