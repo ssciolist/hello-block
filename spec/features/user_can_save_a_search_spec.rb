@@ -51,7 +51,7 @@ describe "As a logged in user" do
         expect(page).to have_content('Added to your saved searches.')
 
         visit user_path(user)
-        save_and_open_page
+
         expect(page).to have_content('Permits within 1 mile of 2035 N JASMINE ST within the last 30 days')
         expect(page).to have_link('Results')
       end
