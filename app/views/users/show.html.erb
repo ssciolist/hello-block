@@ -6,7 +6,9 @@
 <h2>Your saved_searches :</h2>
   <ul>
     <% current_user.saved_searches.each do |search| %>
-      <li>Permits within <%= pluralize(search.distance, 'mile') %> of <%= search.address %> within the last <%= pluralize(search.days, 'day') %></li>
+      <li>
+        <%= link_to 'Results', search.current_url %>
+        Permits within <%= pluralize(search.distance, 'mile') %> of <%= search.address %> within the last <%= pluralize(search.days, 'day') %></li>
     <% end %>
   </ul>
 <% end %>
