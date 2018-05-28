@@ -18,10 +18,12 @@ describe 'As a logged in user' do
           click_on 'Log in'
         end
 
-        saved_search = create(:saved_search, user: user)
+        create(:saved_search, user: user)
         visit user_path(user)
         click_on 'Sign up for weekly email'
-        expect(page).to have_content("we're excited to be sending you weekly updates about your search at #{saved_search.address}")
+        expect(page).to have_content("we're excited to be sending you weekly updates about your search at 2035 N JASMINE ST")
+
+        saved_search = SavedSearch.last
 
         mail = SearchMailer.weekly_mail(saved_search)
 
