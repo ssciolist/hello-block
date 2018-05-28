@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   root "welcome#index"
   resources :searches, only: [:index]
   resources :users, only: [:show] do
-    resources :saved_searches, only: [:create, :destroy]
+    resources :saved_searches, only: [:show, :create, :update, :destroy]
   end
 end

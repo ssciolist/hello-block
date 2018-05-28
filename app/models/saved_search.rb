@@ -1,6 +1,6 @@
 class SavedSearch < ApplicationRecord
   belongs_to :user
-  enum weekly_mail: %w[false, true]
+  enum weekly_mail: { false: 0, true: 1 }
 
   validates_presence_of :current_url
   before_save :generate_address

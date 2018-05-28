@@ -7,11 +7,21 @@ describe 'As a logged in user' do
 
       it 'I can sign up for a weekly email' do
         user = create(:user)
+
+        visit root_path
+        click_on 'Log in'
+
+        fill_in 'user[email]', with: user.email
+        fill_in 'user[password]', with: user.password
+
+        within('.new_user') do
+          click_on 'Log in'
+        end
+
         saved_search = create(:saved_search, user: user)
         visit user_path(user)
-binding.pry
-        # -create column in saved searches for weekly email enum
         click_on 'Sign up for weekly email'
+        expect(page).to have_content("we're excited to be sending you weekly updates about your search at #{saved_search.address}")
 
         mail = SearchMailer.weekly_mail(saved_search)
 

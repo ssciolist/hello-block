@@ -11,6 +11,20 @@ class SavedSearchesController < ApplicationController
     end
   end
 
+  def show
+    @saved_search = SavedSearch.find(params[:id])
+  end
+
+  def update
+    saved_search = SavedSearch.find(params[:id])
+    if saved_search.weekly_email == 0
+      saved_search.update(weekly_email: 1)
+    else
+      saved_search.update(weekly_email: 0)
+    end
+    redirect_to user_saved_search_path(saved_search)
+  end
+
   def destroy
     saved_search = SavedSearch.find(params[:id])
     saved_search.destroy

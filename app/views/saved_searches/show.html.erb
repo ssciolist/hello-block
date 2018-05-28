@@ -1,0 +1,5 @@
+<% if @saved_search.weekly_email == 1 %>
+  <%= render 'new_email' %>
+<% else %>
+  <%= render 'delete_email' %>
+<% end %>
