@@ -1,14 +1,16 @@
 class SavedSearch < ApplicationRecord
   belongs_to :user
+  enum weekly_mail: { false: 0, true: 1 }
 
   validates_presence_of :current_url
+  before_save :generate_address
 
   def distance
     self.current_url.scan(/distance=(.*)&/).flatten.first
   end
 
-  def address
-    self.current_url.scan(/search=(.*)\%2C/).flatten.first.gsub('+', ' ')
+  def generate_address
+    self.address = self.current_url.scan(/search=(.*)\%2C/).flatten.first.gsub('+', ' ')
   end
 
   def days

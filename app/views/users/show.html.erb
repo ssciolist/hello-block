@@ -4,11 +4,15 @@
     <p>Normally, those would be shown here. You could either <%= link_to "go search permits", gifs_path %> or <%= mail_to 'arellano.megan@gmail.com', 'send me an email' %> about what features you'd like to see here.</p>
 <% else %>
 <h2>Your saved_searches :</h2>
-  <ul>
+  <table>
     <% current_user.saved_searches.each do |search| %>
-      <li>
-        <%= link_to 'Results', search.current_url %>
-        Permits within <%= pluralize(search.distance, 'mile') %> of <%= search.address %> within the last <%= pluralize(search.days, 'day') %></li>
+    <tr>
+      <td><%= link_to 'Results', search.current_url %></td>
+      <td><%  unless search.weekly_email == 1 %>
+        <%= link_to 'Sign up for weekly email', user_saved_search_path(current_user, search), method: :patch %>
+        <% end %>
+      </td>
+      <td>Permits within <%= pluralize(search.distance, 'mile') %> of <%= search.address %> within the last <%= pluralize(search.days, 'day') %></li></td>
+    </tr>
     <% end %>
-  </ul>
 <% end %>
