@@ -2,8 +2,8 @@ class SearchMailer < ApplicationMailer
   after_action :prevent_mail_to_saved_searches_with_no_email_sign_up
 
   def weekly_mail(search)
-    binding.pry
     @saved_search = search
+    mail(to: @saved_search.user.email, subject: "This week's building permits from #{saved_search.address}")
   end
 
   private
