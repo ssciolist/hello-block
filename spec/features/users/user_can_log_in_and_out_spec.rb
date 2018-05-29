@@ -29,7 +29,8 @@ describe 'As a user' do
         click_on 'Log in'
         click_on 'Sign in with Google'
 
-        expect(page).to have_content('Signed in successfully.')
+
+        expect(page).to have_content('Successfully authenticated from Google account.')
         expect(page).to_not have_content('Log in')
         expect(page).to have_content('Log out')
       end
