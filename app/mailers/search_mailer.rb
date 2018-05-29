@@ -3,7 +3,7 @@ class SearchMailer < ApplicationMailer
 
   def weekly_mail(search)
     @saved_search = search
-    mail(to: @saved_search.user.email, subject: "This week's building permits from #{saved_search.address}")
+    mail(to: @saved_search.user.email, subject: "This week's building permits from #{@saved_search.address}")
   end
 
   private
