@@ -15,9 +15,4 @@ class BuildingPermit < ApplicationRecord
     .near(address, distance)
   end
 
-  # def self.permit_types_near(address)
-  #   select('permit_types.name')
-  #   .near('address')
-  #   .joins(:permit_type)
-  # end
 end

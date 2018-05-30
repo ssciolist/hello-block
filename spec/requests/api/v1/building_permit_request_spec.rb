@@ -5,7 +5,7 @@ describe 'Building Permit API index' do
     type = PermitType.create(name: 'Single family, detached', p_type: "003")
     building_permits = create_list(:building_permit, 4, permit_type: type)
 
-    get '/api/v1/building_permits/find?days=1&distance=30&address=2035+N+JASMINE+ST%2C+Denver+Colorado'
+    get '/api/v1/building_permits/find?days=30&distance=1&address=2035+N+JASMINE+ST%2C+Denver+Colorado'
 
     search_result = JSON.parse(response.body)
 
