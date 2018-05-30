@@ -6,6 +6,14 @@ require File.expand_path('../../config/environment', __FILE__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
+# require 'webmock/rspec'
+# require 'vcr'
+#
+# VCR.configure do |config|
+#   config.cassette_library_dir = "spec/cassettes"
+#   config.hook_into :webmock
+# end
+
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
     with.test_framework :rspec
