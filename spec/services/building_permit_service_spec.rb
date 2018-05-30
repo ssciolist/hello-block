@@ -15,8 +15,8 @@ describe 'Building Permit Service' do
 
         raw_permits = subject.permit_search
         raw_permit = subject.permit_search.first
-
-        expect(raw_permits.count).to eq(4)
+        
+        expect(raw_permits.count).to eq(46)
         expect(raw_permit).to have_key(:date_issued)
         expect(raw_permit).to have_key(:permit_number)
         expect(raw_permit).to have_key(:address)
@@ -26,3 +26,4 @@ describe 'Building Permit Service' do
       end
     end
   end
+end

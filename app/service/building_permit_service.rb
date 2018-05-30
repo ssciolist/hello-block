@@ -5,6 +5,10 @@ class BuildingPermitService
     @address = address
   end
 
+  def permit_search
+    JSON.parse(conn.body, symbolize_names: true)
+  end
+
   private
 
   def conn

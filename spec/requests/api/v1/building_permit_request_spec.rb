@@ -9,7 +9,7 @@ describe 'Building Permit API index' do
 
     search_result = JSON.parse(response.body)
 
-    expect(response).to be_success
+    expect(response).to be_successful
     expect(search_result.count).to eq(4)
 
     # first_permit = search_result[0]
