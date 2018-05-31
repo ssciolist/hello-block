@@ -12,7 +12,7 @@
         <% if search.weekly_email == "no" %>
           <%= link_to 'Sign up for weekly email', user_saved_search_path(current_user, search), method: :patch %>
         <% else %>
-          <%= link_to 'Unsubscribe', user_saved_search_path(current_user, search), method: :patch %>
+          <%= link_to 'Unsubscribe from email', user_saved_search_path(current_user, search), method: :patch %>
         <% end %>
       </td>
       <td>Permits within <%= pluralize(search.distance, 'mile') %> of <%= search.address %> within the last <%= pluralize(search.days, 'day') %></li></td>

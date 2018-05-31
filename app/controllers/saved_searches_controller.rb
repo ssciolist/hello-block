@@ -22,7 +22,6 @@ class SavedSearchesController < ApplicationController
     else
       saved_search.update(weekly_email: 'no')
     end
-    require 'pry'; binding.pry
     redirect_to user_saved_search_path(saved_search)
   end
 
