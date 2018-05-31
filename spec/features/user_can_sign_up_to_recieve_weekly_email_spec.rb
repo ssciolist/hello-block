@@ -5,6 +5,7 @@ describe 'As a logged in user' do
   describe 'when I visit my account page' do
     context 'with saved searches' do
       it 'I can sign up for a weekly email' do
+
         user = create(:user)
 
         visit root_path
@@ -18,14 +19,17 @@ describe 'As a logged in user' do
         end
 
         saved_search = create(:saved_search, user: user)
+        require 'pry'; binding.pry
         visit user_path(user)
+        save_and_open_page
         click_on 'Sign up for weekly email'
         expect(page).to have_content("we're excited to be sending you weekly updates about your search at 2035 N JASMINE ST")
+
 
         saved_search = SavedSearch.last
 
         mail = SearchMailer.weekly_mail(saved_search)
-require 'pry'; binding.pry
+
         expect { mail.deliver_now }.to change { ActionMailer::Base.deliveries.count }.by(1)
 
         expect(mail.to).to eq([user.email])

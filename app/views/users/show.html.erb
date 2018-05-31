@@ -8,9 +8,10 @@
     <% current_user.saved_searches.each do |search| %>
     <tr>
       <td><%= link_to 'Results', search.current_url %></td>
-      <td><%  unless search.weekly_email == 1 %>
+      <td>
         <%= link_to 'Sign up for weekly email', user_saved_search_path(current_user, search), method: :patch %>
-        <% end %>
+
+
       </td>
       <td>Permits within <%= pluralize(search.distance, 'mile') %> of <%= search.address %> within the last <%= pluralize(search.days, 'day') %></li></td>
     </tr>

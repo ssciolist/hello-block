@@ -26,5 +26,11 @@ RSpec.describe SavedSearch, type: :model do
         expect(subject.days).to eq "30"
       end
     end
+
+    context '#weekly_email' do
+      it 'defaults to false' do
+        expect(subject.weekly_email).to eq('no')
+      end
+    end
   end
 end
