@@ -10,13 +10,10 @@ describe 'Building Permit Service' do
   context 'instance methods' do
     context '#permit_search' do
       it 'returns an array of hashes with building permit data' do
-        type = PermitType.create(name: 'Single family, detached', p_type: "003")
-        building_permits = create_list(:building_permit, 4, permit_type: type)
-
         raw_permits = subject.permit_search
         raw_permit = subject.permit_search.first
 
-        expect(raw_permits.count).to eq(46)
+        expect(raw_permits.count).to eq(91)
         expect(raw_permit).to have_key(:permit_number)
         expect(raw_permit).to have_key(:address)
         expect(raw_permit).to have_key(:valuation)

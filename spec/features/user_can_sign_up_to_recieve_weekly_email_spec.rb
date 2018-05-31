@@ -4,10 +4,7 @@ require 'rails_helper'
 describe 'As a logged in user' do
   describe 'when I visit my account page' do
     context 'with saved searches' do
-
       it 'I can sign up for a weekly email' do
-        type = PermitType.create(name: 'Single family, detached', p_type: "003")
-        permit = create_list(:building_permit, 4, permit_type: type)
         user = create(:user)
 
         visit root_path
@@ -28,7 +25,7 @@ describe 'As a logged in user' do
         saved_search = SavedSearch.last
 
         mail = SearchMailer.weekly_mail(saved_search)
-
+require 'pry'; binding.pry
         expect { mail.deliver_now }.to change { ActionMailer::Base.deliveries.count }.by(1)
 
         expect(mail.to).to eq([user.email])
@@ -40,6 +37,9 @@ describe 'As a logged in user' do
 
         expect(mail.text_part.body).to eq(text_body)
         expect(mail.html_part.body).to eq(html_body)
+      end
+
+      it 'I can get a test email right away' do
       end
     end
   end
