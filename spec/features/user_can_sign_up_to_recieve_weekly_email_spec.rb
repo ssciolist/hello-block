@@ -19,9 +19,8 @@ describe 'As a logged in user' do
         end
 
         saved_search = create(:saved_search, user: user)
-        require 'pry'; binding.pry
         visit user_path(user)
-        save_and_open_page
+
         click_on 'Sign up for weekly email'
         expect(page).to have_content("we're excited to be sending you weekly updates about your search at 2035 N JASMINE ST")
 

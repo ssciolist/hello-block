@@ -3,7 +3,7 @@ class SearchMailer < ApplicationMailer
 
   def weekly_mail(search) #refactor to (search, result). Make the API call separately, probably in the rake task.
     @saved_search = search
-    @distance = @saved_search.current_url.scn(/distance=(.*)&/).flatten.first
+    @distance = @saved_search.current_url.scan(/distance=(.*)&/).flatten.first
     @new_results = BuildingPermitService.new(14, @distance, @saved_search.address).permit_search
     mail(to: @saved_search.user.email, subject: "This week's building permits from #{@saved_search.address}")
   end

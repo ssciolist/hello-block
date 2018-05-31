@@ -1,4 +1,4 @@
-<% if @saved_search.weekly_email == 1 %>
+<% if @saved_search.weekly_email == 'yes' %>
   <%= render 'new_email' %>
 <% else %>
   <%= render 'delete_email' %>
