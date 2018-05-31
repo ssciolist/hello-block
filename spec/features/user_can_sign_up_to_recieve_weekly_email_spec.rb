@@ -6,6 +6,8 @@ describe 'As a logged in user' do
     context 'with saved searches' do
 
       it 'I can sign up for a weekly email' do
+        type = PermitType.create(name: 'Single family, detached', p_type: "003")
+        permit = create_list(:building_permit, 4, permit_type: type)
         user = create(:user)
 
         visit root_path

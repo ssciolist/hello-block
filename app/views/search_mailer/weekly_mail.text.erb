@@ -3,12 +3,12 @@ Here's the new construction permits issued in the past week:
 ==
 
 <% @new_results.each do |permit| %>
-Permit <%= permit.permit_number %>
->Date issued: <%= permit.date_issued %>
->Address: <%= permit.address %>
->Building class: <%= permit.building_class %>
->Estimated value: <%= number_to_currency(permit.valuation) %>
->Owner name: <%= permit.owner_name %>
->Contractor name: <%= permit.contractor_name %>
->Permit type: <%= permit.permit_type.name %>
+Permit <%= permit[:permit_number] %>
+>Date issued: <%= permit[:date_issued] %>
+>Address: <%= permit[:address] %>
+>Building class: <%= permit[:building_class] %>
+>Estimated value: <%= number_to_currency(permit[:valuation]) %>
+>Owner name: <%= permit[:owner_name] %>
+>Contractor name: <%= permit[:contractor_name] %>
+>Permit type: <%= permit[:permit_type] %>
 <% end %>
