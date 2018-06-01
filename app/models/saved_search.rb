@@ -10,7 +10,7 @@ class SavedSearch < ApplicationRecord
   end
 
   def generate_address
-    self.address = self.current_url.scan(/search=(.*)\%2C/).flatten.first.gsub('+', ' ')
+    self.address = self.current_url.scan(/search=(.*)&distance/).flatten.first.gsub('%2C', ',').gsub('+', ' ')
   end
 
   def days

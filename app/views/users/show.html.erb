@@ -3,8 +3,8 @@
   <h2>You haven't saved any searches.</h2>
     <p>Normally, those would be shown here. You could either <%= link_to "go search permits", searches_path %> or <%= mail_to 'arellano.megan@gmail.com', 'send me an email' %> about what features you'd like to see here.</p>
 <% else %>
-<h2>Your saved_searches :</h2>
-  <table>
+<h2 class='user-search-header'>Your saved_searches :</h2>
+  <table class='table user-search-table'>
     <% current_user.saved_searches.each do |search| %>
     <tr>
       <td><%= link_to 'Results', search.current_url %></td>
@@ -18,4 +18,5 @@
       <td>Permits within <%= pluralize(search.distance, 'mile') %> of <%= search.address %> within the last <%= pluralize(search.days, 'day') %></li></td>
     </tr>
     <% end %>
+  </table>
 <% end %>
