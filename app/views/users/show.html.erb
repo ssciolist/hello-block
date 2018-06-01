@@ -1,7 +1,7 @@
 <h1>Welcome, <%= current_user.email %>!</h1>
 <% if current_user.saved_searches.empty? %>
   <h2>You haven't saved any searches.</h2>
-    <p>Normally, those would be shown here. You could either <%= link_to "go search permits", gifs_path %> or <%= mail_to 'arellano.megan@gmail.com', 'send me an email' %> about what features you'd like to see here.</p>
+    <p>Normally, those would be shown here. You could either <%= link_to "go search permits", searches_path %> or <%= mail_to 'arellano.megan@gmail.com', 'send me an email' %> about what features you'd like to see here.</p>
 <% else %>
 <h2>Your saved_searches :</h2>
   <table>
