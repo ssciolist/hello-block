@@ -4,6 +4,6 @@ task send_weekly_email: :environment do
     distance = saved_search.current_url.scan(/distance=(.*)&/).flatten.first
     address = saved_search.current_url.scan(/search=(.*)&distance/).flatten.first.gsub('%2C', ',').gsub('+', ' ')
     result = BuildingPermitService.new(7, distance, address).permit_search
-    SearchMailer.new(saved_search, result).weekly_mail.deliver if saved_search.weekly_email == 'Yes'
+    SearchMailer.weekly_mail(saved_search, result, distance).deliver_now
   end
 end
