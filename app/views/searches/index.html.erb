@@ -2,16 +2,34 @@
    was planned within <%= pluralize(@distance, 'mile') %><br>
     in the past <%= pluralize(@days, 'day') %></h1>
 
-<h3>Refine your search:</h3>
+<% if current_user %>
+<%= button_to "Save this search", user_saved_searches_path(current_user, current_url: request.original_url), class: 'btn btn-primary mb-2 center-block' %>
+<% end %>
+
+<div class="refine-my-search">
+  <h3>Refine your search:</h3>
   <%= form_tag(searches_path, :method => 'get') do %>
-      <%= text_field_tag :search, params[:search], placeholder: @address %>
-      <%= number_field_tag :distance, params[:distance], in: 0.0..10.0, step: 0.5 %>
-      <%= number_field_tag :days, params[:days], in: 1..365, step: 1 %>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <%= label_tag(:search, 'Address:') %>
+        <%= text_field_tag :search, params[:search], placeholder: @address, class: 'form-control' %>
+      </div>
 
-      <%= submit_tag 'Search again', :name => nil %>
+      <div class="form-group col-md-3">
+        <%= label_tag(:search, 'Miles:') %>
+        <%= number_field_tag :distance, params[:distance], in: 0.0..10.0, step: 0.5, class: 'form-control' %>
+      </div>
+
+      <div class="form-group col-md-3">
+        <%= label_tag(:search, 'Days:') %>
+        <%= number_field_tag :days, params[:days], in: 1..365, step: 1, class: 'form-control' %>
+      </div>
+    </div>
+
+    <%= submit_tag 'Search again', :name => nil, class: 'center-block btn btn-default mb-2' %>
   <% end %>
+</div>
 
-<%= will_paginate @search %>
 
 <table class="table search-result-table">
   <tr>
@@ -34,7 +52,6 @@
     <td><%= permit.permit_type.name %></td>
   </tr>
   <% end %>
-  <% if current_user %>
-    <%= button_to "Save this search", user_saved_searches_path(current_user, current_url: request.original_url) %>
-  <% end %>
 </table>
+
+  <%= will_paginate @search %>
