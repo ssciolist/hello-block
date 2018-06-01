@@ -6,4 +6,12 @@ Rails.application.routes.draw do
   resources :users, only: [:show] do
     resources :saved_searches, only: [:show, :create, :update, :destroy]
   end
+
+  namespace :api do
+    namespace :v1 do
+      namespace :building_permits do
+        get 'find', to: 'search#show'
+      end
+    end
+  end
 end

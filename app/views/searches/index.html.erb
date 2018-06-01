@@ -11,6 +11,8 @@
       <%= submit_tag 'Search again', :name => nil %>
   <% end %>
 
+<%= will_paginate @search %>
+
 <table class="table search-result-table">
   <tr>
     <th>Date Issued</th>

@@ -27,6 +27,10 @@ $main-green: #3F9476;
   width: 100%;
   left: 0;
   text-align: center;
+
+  a:hover {
+    text-decoration: none;
+  }
 }
 
 .navbar-right {
@@ -37,9 +41,7 @@ $main-green: #3F9476;
 }
 
 footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
+
   width: 90%;
   padding-left: 7%;
   padding-bottom: 20px;

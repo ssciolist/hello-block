@@ -17,10 +17,10 @@ class SavedSearchesController < ApplicationController
 
   def update
     saved_search = SavedSearch.find(params[:id])
-    if saved_search.weekly_email == 0
-      saved_search.update(weekly_email: 1)
+    if saved_search.weekly_email == 'no'
+      saved_search.update(weekly_email: 'yes')
     else
-      saved_search.update(weekly_email: 0)
+      saved_search.update(weekly_email: 'no')
     end
     redirect_to user_saved_search_path(saved_search)
   end
