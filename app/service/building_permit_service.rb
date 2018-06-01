@@ -12,7 +12,7 @@ class BuildingPermitService
   private
 
   def conn
-    Faraday.get("http://localhost:3000/api/v1/building_permits/find?days=#{@days}&distance=#{@distance}&address=#{@address}")
+    Faraday.get("https://hello-block.herokuapp.com/api/v1/building_permits/find?days=#{@days}&distance=#{@distance}&address=#{@address}")
   end
 
 end
