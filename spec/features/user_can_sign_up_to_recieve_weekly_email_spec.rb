@@ -40,9 +40,6 @@ describe 'As a logged in user' do
         expect(mail.html_part.body).to include('2245 N Kearney St')
         expect(mail.text_part.body).to include('May 25, 2018')
         expect(mail.html_part.body).to include('May 25, 2018')
-
-        # text_body = File.read('spec/fixtures/search_mailer/results.txt')
-        # html_body = File.read('spec/fixtures/search_mailer/results.html')
       end
     end
   end
