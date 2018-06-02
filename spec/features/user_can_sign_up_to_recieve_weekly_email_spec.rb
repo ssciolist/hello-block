@@ -1,6 +1,5 @@
 require 'rails_helper'
 
-
 describe 'As a logged in user' do
   describe 'when I visit my account page' do
     context 'with saved searches' do
