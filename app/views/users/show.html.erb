@@ -16,6 +16,7 @@
         <% end %>
       </td>
       <td>Permits within <%= pluralize(search.distance, 'mile') %> of <%= search.address %> within the last <%= pluralize(search.days, 'day') %></li></td>
+      <td><%= link_to 'Delete this search', user_saved_search_path(current_user, search), method: :delete %></td>
     </tr>
     <% end %>
   </table>

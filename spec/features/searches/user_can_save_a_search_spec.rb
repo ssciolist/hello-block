@@ -21,8 +21,6 @@ describe "As a logged in user" do
   describe 'when I make a search' do
     describe 'and I click save this search' do
       it 'should create a link to this search on my profile page' do
-        # user = create(:user)
-        # allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
         user = create(:user)
 
         visit root_path
@@ -53,7 +51,7 @@ describe "As a logged in user" do
         visit root_path
         click_on 'My account'
 
-        expect(page).to have_content('Permits within 1 mile of 2035 N JASMINE ST within the last 30 days')
+        expect(page).to have_content('Permits within 1 mile of 2035 N JASMINE ST, Denver Colorado within the last 30 days')
         expect(page).to have_link('Results')
       end
     end

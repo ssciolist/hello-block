@@ -1,18 +1,23 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
+
+require 'simplecov'
+SimpleCov.start "rails" do
+  add_filter "app/channels/application_cable/channel.rb"
+  add_filter "app/channels/application_cable/connection.rb"
+  add_filter "app/jobs/application_job.rb"
+  add_filter "app/helpers/application_helper.rb"
+  add_filter "app/models/application_record.rb"
+end
+
 require File.expand_path('../../config/environment', __FILE__)
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
-# require 'webmock/rspec'
-# require 'vcr'
-#
-# VCR.configure do |config|
-#   config.cassette_library_dir = "spec/cassettes"
-#   config.hook_into :webmock
-# end
+require 'webmock/rspec'
+WebMock.disable_net_connect!(allow: 'https://maps.googleapis.com')
 
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
@@ -136,4 +141,5 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
 end

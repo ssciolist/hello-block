@@ -1,12 +1,16 @@
 class BuildingPermitSearchPresenter
+  attr_reader :days, :distance, :address
+  def initialize(days, search, distance)
+    @days = days
+    @distance = distance
+    @address = search
+  end
 
-  # def best_weather
-  #   Trip.best_weather
-  # end
-  #
-  # def worst_weather
-  #   Trip.worst_weather
-  # end
-  # ^^ example
+  def search_results
+    BuildingPermit.search_result(@days, @address, @distance)
+  end
 
+  def value
+    search_results.sum(:valuation)
+  end
 end
