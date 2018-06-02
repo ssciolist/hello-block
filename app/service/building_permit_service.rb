@@ -6,7 +6,6 @@ class BuildingPermitService
   end
 
   def permit_search
-    # require 'pry'; binding.pry
     JSON.parse(conn.body, symbolize_names: true)
   end
 
