@@ -25,6 +25,15 @@ describe 'As a logged in user' do
 
         saved_search = SavedSearch.last
 
+
+        stub_request(:get, "https://hello-block.herokuapp.com/api/v1/building_permits/find?address=2035%20N%20JASMINE%20Street,%20Denver%20Colorado&days=7&distance=1").
+         with(
+           headers: {
+       	  'Accept'=>'*/*',
+       	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+       	  'User-Agent'=>'Faraday v0.12.2'
+           }).
+         to_return(status: 200, body: "[]", headers: {})
         result = BuildingPermitService.new(7, 1, "2035 N JASMINE Street, Denver Colorado").permit_search
         mail = SearchMailer.weekly_mail(saved_search, result, 1)
 
