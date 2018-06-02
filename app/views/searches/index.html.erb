@@ -1,6 +1,6 @@
-<h1>Approximately <%= number_to_currency(@value) %> in construction<br>
-   was planned within <%= pluralize(@distance, 'mile') %><br>
-    in the past <%= pluralize(@days, 'day') %></h1>
+<h1>Approximately <%= number_to_currency(@presenter.value) %> in construction<br>
+   was planned within <%= pluralize(@presenter.distance, 'mile') %><br>
+    in the past <%= pluralize(@presenter.days, 'day') %></h1>
 
 <% if current_user %>
 <%= button_to "Save this search", user_saved_searches_path(current_user, current_url: request.original_url), class: 'btn btn-primary mb-2 center-block' %>
@@ -12,7 +12,7 @@
     <div class="form-row">
       <div class="form-group col-md-6">
         <%= label_tag(:search, 'Address:') %>
-        <%= text_field_tag :search, params[:search], placeholder: @address, class: 'form-control' %>
+        <%= text_field_tag :search, params[:search], placeholder: @presenter.address, class: 'form-control' %>
       </div>
 
       <div class="form-group col-md-3">
@@ -41,7 +41,7 @@
     <th>Contractor Name</th>
     <th>Permit Type</th>
   </tr>
-  <% @search.each do |permit| %>
+  <% @presenter.search_results.each do |permit| %>
   <tr class="building_permit">
     <td><%= permit.date_issued %></td>
     <td><%= permit.address %></td>
