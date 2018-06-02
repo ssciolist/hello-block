@@ -18,13 +18,6 @@ require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 require 'webmock/rspec'
 WebMock.disable_net_connect!(allow: 'https://maps.googleapis.com')
-# require 'vcr'
-#
-# VCR.configure do |config|
-#   config.cassette_library_dir = "spec/cassettes"
-#   config.hook_into :webmock
-# end
-
 
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
