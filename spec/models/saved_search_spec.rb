@@ -11,7 +11,7 @@ RSpec.describe SavedSearch, type: :model do
 
     context '#address' do
       it 'returns a string address' do
-        expect(subject.address).to eq "2035 N JASMINE ST"
+        expect(subject.address).to eq "2035 N JASMINE ST, Denver Colorado"
       end
     end
 
