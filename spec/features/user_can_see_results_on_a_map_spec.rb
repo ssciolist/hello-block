@@ -15,7 +15,7 @@ describe 'As a visitor' do
 
         expect(page).to have_button('Search again')
         expect(page).to have_button('Show me a map instead')
-        click 'Show me a map instead'
+        click_on 'Show me a map instead'
 
         expect(current_path).to eq('/maps')
         expect(page).to have_css('.map')
