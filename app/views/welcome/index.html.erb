@@ -7,4 +7,4 @@
     <%= submit_tag 'Search', :name => nil, class: 'btn btn-primary mb-2' %>
 <% end %>
 
-<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV["GOOGLE_PLACES"]}&libraries=places&callback=initAutocomplete", async: true, defer: true %>
+<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV["GOOGLE_MAPS_API_KEY"]}&libraries=places&callback=initAutocomplete", async: true, defer: true %>
