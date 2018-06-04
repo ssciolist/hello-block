@@ -62,7 +62,11 @@ const buildMarkers = (permits, map) => {
 const buildInfoWindow = (marker, data) => {
   var infoWindow = new google.maps.InfoWindow();
   google.maps.event.addListener(marker, "click", function(e) {
-    infoWindow.setContent(data.address);
+    infoWindow.setContent(`<b>Address:</b> ${data.address}<br>
+                           <b>Building Class:</b> ${data.building_class}<br>
+                           <b>Valuation:</b> ${data.valuation}<br>
+                           <b>Owner:</b> ${data.owner_name}<br>
+                           <b>Date Issued:</b> ${data.date_issued}`);
     infoWindow.open(map, marker)
   })
 }

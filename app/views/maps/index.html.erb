@@ -1,4 +1,7 @@
-<h1>Results for </h1>
+<h1>Approximately <%= number_to_currency(@presenter.value) %> of construction<br>
+   planned within <span id="map-distance"><%= pluralize(@presenter.distance, 'mile') %></span> of<br>
+    <span id="map-address"><%= @presenter.address %></span><br>
+    in the past <span id="map-days"><%= pluralize(@presenter.days, 'day') %></span></h1>
 
 <div id="map",
  data-start_lat="<%= @home_marker[0] %>",
