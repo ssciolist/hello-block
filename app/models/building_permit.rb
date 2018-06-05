@@ -13,6 +13,7 @@ class BuildingPermit < ApplicationRecord
   def self.search_result(days, address, distance)
     where(date_issued: (DateTime.now - days.to_i)..(DateTime.now))
     .near(address, distance)
+    .includes(:permit_type)
   end
 
 end
