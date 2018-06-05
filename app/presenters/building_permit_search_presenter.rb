@@ -7,7 +7,7 @@ class BuildingPermitSearchPresenter
   end
 
   def search_results
-    BuildingPermit.search_result(@days, @address, @distance)
+    @results ||= BuildingPermit.search_result(@days, @address, @distance)
   end
 
   def value
