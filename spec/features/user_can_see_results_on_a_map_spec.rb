@@ -18,7 +18,7 @@ describe 'As a visitor' do
         click_on 'Show me a map instead'
 
         expect(current_path).to eq('/maps')
-        expect(page).to have_css('.map')
+        expect(page).to have_css('#map')
       end
     end
   end
