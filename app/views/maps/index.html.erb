@@ -8,4 +8,4 @@
  data-start_long="<%= @home_marker[1] %>",
  data-permits="<%= @presenter.search_results.to_json %>">
 </div>
-<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV["GOOGLE_MAPS_API_KEY"]}&libraries=places&callback=initMap", async: true, defer: true %>
+<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV["GOOGLE_MAPS_API_KEY"]}&libraries=places", async: true, defer: true %>
