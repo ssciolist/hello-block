@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   root "welcome#index"
   resources :searches, only: [:index]
   resources :maps, only: [:index]
+  resources :about, only: [:index]
+  resources :terms, only: [:index]
   resources :users, only: [:show] do
     resources :saved_searches, only: [:show, :create, :update, :destroy]
   end
