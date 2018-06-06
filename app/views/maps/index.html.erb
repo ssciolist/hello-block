@@ -9,3 +9,4 @@
  data-permits="<%= @presenter.search_results.to_json %>">
 </div>
 <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV["GOOGLE_MAPS_API_KEY"]}&libraries=places", async: true, defer: true %>
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
