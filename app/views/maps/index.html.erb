@@ -1,3 +1,5 @@
+<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV["GOOGLE_MAPS_API_KEY"]}&libraries=places", async: true, defer: true %>
+
 <h1>Approximately <%= number_to_currency(@presenter.value) %> of construction<br>
    planned within <span id="map-distance"><%= pluralize(@presenter.distance, 'mile') %></span> of<br>
     <span id="map-address"><%= @presenter.address %></span><br>
@@ -8,5 +10,3 @@
  data-start_long="<%= @home_marker[1] %>",
  data-permits="<%= @presenter.search_results.to_json %>">
 </div>
-<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV["GOOGLE_MAPS_API_KEY"]}&libraries=places", async: true, defer: true %>
-<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
