@@ -1,4 +1,5 @@
 google.maps.event.addDomListener(window, 'load', initAutocomplete);
+google.maps.event.addDomListener(window, 'load', initMap);
 
 function initAutocomplete() {
   // Create the autocomplete object, restricting the search to geographical
