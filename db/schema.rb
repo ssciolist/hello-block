@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_28_005212) do
+ActiveRecord::Schema.define(version: 2018_06_22_203822) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2018_05_28_005212) do
     t.bigint "permit_type_id"
     t.float "latitude"
     t.float "longitude"
+    t.index ["date_issued"], name: "index_building_permits_on_date_issued"
     t.index ["permit_type_id"], name: "index_building_permits_on_permit_type_id"
   end
 
@@ -46,6 +47,10 @@ ActiveRecord::Schema.define(version: 2018_05_28_005212) do
     t.integer "weekly_email", default: 0
     t.string "address"
     t.index ["user_id"], name: "index_saved_searches_on_user_id"
+  end
+
+  create_table "scraped_files", force: :cascade do |t|
+    t.string "url"
   end
 
   create_table "users", force: :cascade do |t|

@@ -14,33 +14,29 @@
 #                      p_type_3: row[:p_type_3])
 # end
 
-Dir.glob('data/batch_12/*').each do |file|
+Dir.glob('data/batch_23/*').each do |file|
   CSV.foreach("./#{file}", headers: false) do |row|
     permit_na = "999"
     na = "(Not specified)"
-    BuildingPermit.create!(date_issued:     row[0],
-                           permit_number:   row[3],
-                           address:         row[6],
-                           sublocation:     row[8],
-                           building_class:  row[11],
-                           valuation:       (if row[15].present?
-                                                row[15]
+    BuildingPermit.create!(date_issued:     row[1],
+                           permit_number:   row[2],
+                           address:         row[3],
+                           sublocation:     row[4],
+                           building_class:  row[5],
+                           valuation:       (if row[7].present?
+                                                row[7]
                                              else
                                                 0
                                              end),
-                           fee:             row[16],
-                           owner_name:      (if row[18].present?
-                                                row[18]
+                           fee:             row[8],
+                           owner_name:      na,
+                           contractor_name: (if row[9].present?
+                                                row[9]
                                              else
                                                 na
                                              end),
-                           contractor_name: (if row[20].present?
-                                                row[20]
-                                             else
-                                                na
-                                             end),
-                           permit_type_id:  (if row[22].present?
-                                                row[22]
+                           permit_type_id:  (if row[0].present?
+                                                row[0]
                                              else
                                                 permit_na
                                              end)

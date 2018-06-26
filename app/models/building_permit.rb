@@ -5,6 +5,7 @@ class BuildingPermit < ApplicationRecord
 
   validates_presence_of :date_issued, :permit_number, :address,
                         :valuation, :owner_name, :contractor_name
+  validates :permit_number, uniqueness: true
 
   def full_street_address
     "#{address}, Denver Colorado"
