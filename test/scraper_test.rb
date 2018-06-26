@@ -23,4 +23,10 @@ class ScraperTest < Minitest::Test
     assert file_name.match?(/20/)
     assert_equal ".xls", file_name[-4..-1]
   end
+
+  def test_it_can_find_unscraped_files
+    files_to_scrape = @scraper.find_unscraped_files(["www.example.com", "another_example.com/pretend"])
+
+    assert files_to_scrape > 63
+  end
 end

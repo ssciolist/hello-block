@@ -1,16 +1,12 @@
-require 'CSV'
+require 'csv'
 
 class CsvCleaner
-  def original_csv_files
-    Dir.glob('./csv/*')
-  end
-
   def clean_csv_namer(file)
-    file.scan(/\/csv\/(.*).csv/).flatten.first
+    file.scan(/\d{6}\/(.*)/).flatten.first
   end
 
   def file_root
-    '/Users/meganarellano/turing/3module/projects/denver-building-permit-scraper/cleaned/'
+    '/Users/meganarellano/turing/3module/projects/hello-block/data'
   end
 
   def row_containing_permit?(row)
@@ -28,7 +24,7 @@ class CsvCleaner
     end
   end
 
-  def output_clean_csv(destination, original_csv)
+  def output_clean_csv(original_csv, destination)
     CSV.open(destination, 'wb') do |csv_out|
       CSV.foreach(original_csv) do |row|
         if row.first.is_a?(String) && row.first.include?("Stat Code:")
@@ -41,19 +37,22 @@ class CsvCleaner
     end
   end
 
-  def rewrite_dates(new_csv, original_csv)
-    CSV.open(new_csv, 'wb') do |csv_out|
+  def rewrite_dates_from_mmddyy_with_dashes(original_csv, destination)
+    CSV.open(destination, 'wb') do |csv_out|
       CSV.foreach(original_csv) do |row|
-        row[0].gsub!('/', '-') if row[0].match?(/\d{2}\/\d{2}\/\d{4}/)
+        if row[0].match?(/\d{2}\/\d{2}\/\d{4}/)
+          mm_dd_yyyy = row[0].split('/')
+          row[0] = mm_dd_yyyy[2] + '-' + mm_dd_yyyy[0] + '-' + mm_dd_yyyy[1]
+        end
         csv_out << row
       end
     end
   end
 
-  def batch_output
-    original_csv_files.each do |file|
-      destination = file_root + clean_csv_namer(file) + '.csv'
-      output_clean_csv(destination, file)
+  def batch_output_cleaned(date)
+    Dir.glob("#{file_root}/#{date}/*.csv").each do |file|
+      destination = file_root + "/#{date}/to_process/" + clean_csv_namer(file)
+      output_clean_csv(file, destination)
     end
   end
 end

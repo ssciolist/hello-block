@@ -18,6 +18,12 @@ class Scraper
     end.compact
   end
 
+  def find_unscraped_files(scraped_files_array)
+    links_after_2014.reject do |url|
+      scraped_files_array.include?(url)
+    end
+  end
+
   def find_year(item)
     item['href'].scan(/PermitRecords\/(.*)\//).flatten[0].to_i
   end
@@ -34,23 +40,24 @@ class Scraper
   end
 
   def file_name_builder(link)
-    link.scan(/(20.*)/).flatten.fetch(0)
+    link.scan(/20\d{2}\/(.*)/).flatten.fetch(0)
   end
 
-  def file_root
-    '/Users/meganarellano/turing/3module/projects/hello-block/data/'
+  def file_destination_root
+    '/Users/meganarellano/turing/3module/projects/hello-block/data'
   end
 
   def create_single_file(link)
-    file_name = file_root + file_name_builder(link)
+    file_name = file_destination_root + "/#{Date.today.strftime('%Y%m%d')}/" + file_name_builder(link)
     File.open(file_name, 'wb') do |file|
       file << open(link).read
     end
   end
 
-  def take_files
-    links.each do |link|
+  def batch_create_files(array)
+    array.each do |link|
       create_single_file(link)
     end
   end
+
 end
