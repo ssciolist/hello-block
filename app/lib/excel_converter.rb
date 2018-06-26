@@ -11,7 +11,7 @@ class ExcelConverter
   end
 
   def file_destination_root
-    '/Users/meganarellano/turing/3module/projects/hello-block/data'
+    '/Users/meganarellano/turing/3module/projects/hello-block/data2'
   end
 
   def convert_to_csv
