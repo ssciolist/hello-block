@@ -14,8 +14,8 @@ task update_permit_table: :environment do
   seeder = Seeder.new
 
   unless scraper.find_unscraped_files(files_in_system).empty?
-    date_directory = Dir.mkdir("/Users/meganarellano/turing/3module/projects/hello-block/data2/#{date}")
-    files_to_process = Dir.mkdir("/Users/meganarellano/turing/3module/projects/hello-block/data2/#{date}/to_process")
+    date_directory = Dir.mkdir("/Users/meganarellano/turing/3module/projects/hello-block/tmp/#{date}")
+    files_to_process = "/Users/meganarellano/turing/3module/projects/hello-block/tmp/#{date}/to_process"
 
     unscraped_files = scraper.find_unscraped_files(files_in_system)
     scraper.batch_create_files(unscraped_files)
