@@ -44,7 +44,7 @@ class Scraper
   end
 
   def file_destination_root
-    '/Users/meganarellano/turing/3module/projects/hello-block/data2'
+    '/Users/meganarellano/turing/3module/projects/hello-block/tmp'
   end
 
   def create_single_file(link)

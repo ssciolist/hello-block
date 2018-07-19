@@ -6,7 +6,7 @@ class CsvCleaner
   end
 
   def file_root
-    '/Users/meganarellano/turing/3module/projects/hello-block/data2'
+    '/Users/meganarellano/turing/3module/projects/hello-block/tmp'
   end
 
   def row_containing_permit?(row)
