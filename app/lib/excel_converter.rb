@@ -7,11 +7,11 @@ class ExcelConverter
   end
 
   def csv_namer(file)
-    file.scan(/data\/\d{8}\/(.*).xls/).flatten.first
+    file.scan(/tmp\/\d{8}\/(.*).xls/).flatten.first
   end
 
   def file_destination_root
-    '/Users/meganarellano/turing/3module/projects/hello-block/data2'
+    '/Users/meganarellano/turing/3module/projects/hello-block/tmp'
   end
 
   def convert_to_csv
@@ -32,7 +32,7 @@ class ExcelConverter
   end
 
   def batch_file_conversion(date)
-    Dir.glob("data/#{date}/*.xls").each do |file|
+    Dir.glob("tmp/#{date}/*.xls").each do |file|
       destination = file_destination_root + "/#{date}/" + csv_namer(file) + '.csv'
       single_file_conversion(file, destination)
     end
