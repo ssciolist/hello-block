@@ -1,3 +1,8 @@
+<div class="chart-container">
+  <canvas id="resConstruction"></canvas>
+</div>
+
+
 <%= form_tag(searches_path, method: 'get', class: 'home-search center-block') do %>
 
     <%= text_field_tag :search, params[:search], placeholder: 'Street, City State, Zip', class: 'form-control form-control-lg', id: 'autocomplete', onFocus: "geolocate()" %>
@@ -8,3 +13,4 @@
 <% end %>
 
 <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV["GOOGLE_MAPS_API_KEY"]}&libraries=places", async: true, defer: true %>
+<%= javascript_pack_tag 'charts' %>
