@@ -1,5 +1,11 @@
-<div class="chart-container">
+<div class="home-page-container">
+
+<div class="hp-res-chart-container">
   <canvas id="resConstruction"></canvas>
+</div>
+
+<div class="hp-comm-chart-container">
+  <canvas id="commConstruction"></canvas>
 </div>
 
 
@@ -14,3 +20,4 @@
 
 <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV["GOOGLE_MAPS_API_KEY"]}&libraries=places", async: true, defer: true %>
 <%= javascript_pack_tag 'charts' %>
+</div>

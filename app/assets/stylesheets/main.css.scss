@@ -40,11 +40,28 @@ $main-green: #3F9476;
   }
 }
 
+.home-page-container {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-gap: 10px;
+  grid-template-rows: 20% 20% 20% 20% 20%;
+  align-items: center;
+}
+
 .home-search {
-  width: 40%;
   text-align: center;
-  padding-top: 10%;
-  padding-bottom: 20%;
+  grid-column: 1 / 3;
+  grid-row: 5 / 6;
+}
+
+.hp-res-chart-container {
+  grid-column: 1 / 2;
+  grid-row: 2 / 4;
+}
+
+.hp-comm-chart-container {
+  grid-column: 2 / 3;
+  grid-row: 2 / 4;
 }
 
 footer {
@@ -113,9 +130,4 @@ h1 {
 
 p {
   text-align: center;
-}
-
-.chart-container {
-  height: 40%;
-  width: 40%;
 }
