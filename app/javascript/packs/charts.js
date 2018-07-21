@@ -6,7 +6,7 @@ let resChart = new Chart(residential, {
     data: {
         labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
         datasets: [{
-            label: '# of Votes',
+            label: 'Planned construction value',
             data: [12, 19, 3, 5, 2, 3],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)'
@@ -18,10 +18,21 @@ let resChart = new Chart(residential, {
         }]
     },
     options: {
+        responsive: true,
+        title: {
+          display: true,
+          text: 'Residential Construction Planned in Denver',
+          fontSize: 25,
+          fontFamily: 'Helvetica',
+        },
         scales: {
             yAxes: [{
                 ticks: {
-                    beginAtZero:true
+                    beginAtZero:true,
+                },
+                scaleLabel: {
+                  display: true,
+                  labelString: "Thousands of dollars"
                 }
             }]
         }
@@ -34,22 +45,33 @@ let commChart = new Chart(commercial, {
     data: {
         labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
         datasets: [{
-            label: '# of Votes',
+            label: 'Total value of planned construction',
             data: [12, 19, 3, 5, 2, 3],
             backgroundColor: [
-                'rgba(255, 99, 132, 0.2)'
+                'rgba(54, 162, 235, 0.2)'
             ],
             borderColor: [
-                'rgba(255,99,132,1)'
+                'rgba(54, 162, 235, 1)'
             ],
             borderWidth: 1
         }]
     },
     options: {
+      responsive: true,
+      title: {
+        display: true,
+        text: 'Commercial Construction Planned in Denver',
+        fontSize: 25,
+        fontFamily: 'Helvetica',
+      },
         scales: {
             yAxes: [{
                 ticks: {
                     beginAtZero:true
+                },
+                scaleLabel: {
+                  display: true,
+                  labelString: "Thousands of dollars"
                 }
             }]
         }
