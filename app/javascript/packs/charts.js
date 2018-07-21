@@ -48,7 +48,7 @@ let resChart = new Chart(residential, {
                 },
                 scaleLabel: {
                   display: true,
-                  labelString: "Thousands of dollars"
+                  labelString: "Dollars"
                 }
             }]
         }
@@ -94,11 +94,11 @@ let commChart = new Chart(commercial, {
         scales: {
             yAxes: [{
                 ticks: {
-                    beginAtZero:true
+                    beginAtZero:false
                 },
                 scaleLabel: {
                   display: true,
-                  labelString: "Thousands of dollars"
+                  labelString: "Dollars"
                 }
             }]
         }
