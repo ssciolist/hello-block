@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       namespace :building_permits do
         get 'find', to: 'search#show'
+        get 'summarize', to: 'sum#show'
       end
     end
   end

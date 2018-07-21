@@ -14,7 +14,7 @@ describe 'Building Permit API index' do
     create(:building_permit, permit_number: "2016-RESCON-9", valuation: 50, permit_type: type)
     create(:building_permit, permit_number: "2016-RESCON-10", valuation: 50, permit_type: type)
 
-    get '/api/v1/building_permits_values/find?class=RESCON&years=2015,2016,2017,2018&group=years'
+    get '/api/v1/building_permits/summarize?class=RESCON&years=2015,2016,2017,2018&group=years'
 
     search_result = JSON.parse(response.body)
 
@@ -42,7 +42,7 @@ describe 'Building Permit API index' do
     create(:building_permit, permit_number: "2016-COMMCON-9", valuation: 8, permit_type: type)
     create(:building_permit, permit_number: "2016-COMMCON-10", valuation: 8, permit_type: type)
 
-    get '/api/v1/building_permits_values/find?class=COMMCON&years=2015,2016,2017,2018&group=years'
+    get '/api/v1/building_permits/summarize?class=COMMCON&years=2015,2016,2017,2018&group=years'
 
     search_result = JSON.parse(response.body)
 
