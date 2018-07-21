@@ -17,4 +17,10 @@ class BuildingPermit < ApplicationRecord
     .near(address, distance)
   end
 
+  def self.aggregate_by_year(year, permit_class)
+    includes(:permit_type)
+    .where("permit_number LIKE '#{year}-#{permit_class}%'")
+    .select('SUM(valuation) AS total')
+  end
+
 end
