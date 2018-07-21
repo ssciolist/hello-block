@@ -1,13 +1,29 @@
 import Chart from 'chart.js';
 
+$(document).ready(function(){
+  drawResChart();
+  drawCommChart();
+})
+
+
 let residential = document.getElementById("resConstruction");
+
+function drawResChart() {
+  return fetch(`http://localhost:3000/api/v1/building_permits/summarize?class=RESCON&years=2015,2016,2017,2018&group=years`)
+  .then((response) => response.json())
+  .then((rawData) => {
+    resChart.data.datasets[0].data = [rawData['2015'], rawData['2016'], rawData['2017'], rawData['2018']]
+    resChart.update()
+  })
+}
+
 let resChart = new Chart(residential, {
     type: 'line',
     data: {
-        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+        labels: ["2015", "2016", "2017", "2018 (so far)"],
         datasets: [{
             label: 'Planned construction value',
-            data: [12, 19, 3, 5, 2, 3],
+            data: [],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)'
             ],
@@ -39,14 +55,25 @@ let resChart = new Chart(residential, {
     }
 });
 
+
 let commercial = document.getElementById("commConstruction");
+
+function drawCommChart() {
+  return fetch(`http://localhost:3000/api/v1/building_permits/summarize?class=COMMCON&years=2015,2016,2017,2018&group=years`)
+  .then((response) => response.json())
+  .then((rawData) => {
+    commChart.data.datasets[0].data = [rawData['2015'], rawData['2016'], rawData['2017'], rawData['2018']]
+    commChart.update()
+  })
+}
+
 let commChart = new Chart(commercial, {
     type: 'line',
     data: {
-        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+        labels: ["2015", "2016", "2017", "2018 (so far)"],
         datasets: [{
             label: 'Total value of planned construction',
-            data: [12, 19, 3, 5, 2, 3],
+            data: [],
             backgroundColor: [
                 'rgba(54, 162, 235, 0.2)'
             ],
