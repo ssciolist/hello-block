@@ -8,7 +8,7 @@ describe 'As a visitor' do
           visit '/'
 
           click_on 'maps and more'
-          expect(current_path).to eq('/data-dashboard')
+          expect(current_path).to eq('/data_dashboard')
 
           expect(page).to have_css('#neighborhood-map-container')
         end

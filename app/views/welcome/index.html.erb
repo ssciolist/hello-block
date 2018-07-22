@@ -13,7 +13,7 @@
   </div>
 
   <div class="hp-do-more-text">
-    <h1>Check out maps and more or search what's happening near you:</h1>
+    <h1>Check out <%= link_to 'maps and more', data_dashboard_index_path %> or search what's happening near you:</h1>
   </div>
 
   <%= form_tag(searches_path, method: 'get', class: 'home-search center-block') do %>
