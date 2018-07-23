@@ -9,6 +9,7 @@ let neighborhoodMap = new mapboxgl.Map({
   zoom: 10.5,
 })
 
+// zoom in and out button
 let nav = new mapboxgl.NavigationControl();
 neighborhoodMap.addControl(nav, 'top-right');
 
@@ -30,3 +31,34 @@ neighborhoodMap.on('load', function () {
     }
   });
 });
+
+// map colors
+let hues = [
+    '#eff3ff',
+    '#bdd7e7',
+    '#6baed6',
+    '#3182bd',
+    '#08519c'];
+
+// variables that will sort the map view
+let mapSort = [
+    'Residential construction',
+    'Commercial construction'];
+
+// Collect the range of each variable over the full set, so
+// we know what to color the brightest or darkest.
+let ranges = {};
+let $select = $('<select></select>')
+    .appendTo($('#variables'))
+    .on('change', function() {
+        setVariable($(this).val());
+    });
+for (var i = 0; i < mapSort.length; i++) {
+    ranges[variables[i]] = { min: Infinity, max: -Infinity };
+    // Simultaneously, build the UI for selecting different
+    // ranges
+    $('<option></option>')
+        .text(mapSort[i])
+        .attr('value', variables[i])
+        .appendTo($select);
+}
