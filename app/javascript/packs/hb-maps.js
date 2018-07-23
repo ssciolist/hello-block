@@ -27,7 +27,8 @@ neighborhoodMap.on('load', function () {
       visibility: 'visible'
     },
     paint: {
-      'fill-color': 'rgba(61,153,80,0.55)'
+      'fill-color': 'rgba(61,153,80,0.55)',
+      'fill-outline-color': 'rgba(0,0,0,1)',
     }
   });
 });
