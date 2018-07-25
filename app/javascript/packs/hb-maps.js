@@ -16,50 +16,53 @@ neighborhoodMap.addControl(nav, 'top-right');
 neighborhoodMap.on('load', function () {
   neighborhoodMap.addSource('nbhdPolygons', {
     type: 'geojson',
-    data: 'https://raw.githubusercontent.com/codeforamerica/click_that_hood/master/public/data/denver.geojson'
+    data: 'https://raw.githubusercontent.com/ssciolist/credit_check/master/neighborhoods_w_sum.geojson'
   });
 
+
   neighborhoodMap.addLayer({
-    id: 'nbhdOutlines',
+    id: 'nbhd-layer',
     type: 'fill',
     source: 'nbhdPolygons',
     layout: {
       visibility: 'visible'
     },
     paint: {
-      'fill-color': 'rgba(61,153,80,0.55)',
-      'fill-outline-color': 'rgba(0,0,0,1)',
+      'fill-color': {
+        property: 'total',
+        stops: [
+          [4157428, '#240b36'],
+          [28172883,'#971535'],
+          [60446761.5, '#741335'],
+          [187035524, '#490F35'],
+          [1346648930, '#c31432']
+        ]},
+      'fill-outline-color': 'rgba(0,0,80,1)',
     }
   });
+
+  // When a click event occurs on a feature in the nbhd layer, open a popup at the
+  // location of the click, with description HTML from its properties.
+    neighborhoodMap.on('click', 'nbhd-layer', function (e) {
+        new mapboxgl.Popup()
+            .setLngLat(e.lngLat)
+            .setHTML(e.features[0].properties.name)
+            .addTo(neighborhoodMap);
+    });
+
+    // Change the cursor to a pointer when the mouse is over the layer.
+    neighborhoodMap.on('mouseenter', 'nbhd-layer', function () {
+        neighborhoodMap.getCanvas().style.cursor = 'pointer';
+    });
+
+    // Change it back to a pointer when it leaves.
+    neighborhoodMap.on('mouseleave', 'nbhd-layer', function () {
+        neighborhoodMap.getCanvas().style.cursor = '';
+    });
 });
 
-// map colors
-let hues = [
-    '#eff3ff',
-    '#bdd7e7',
-    '#6baed6',
-    '#3182bd',
-    '#08519c'];
 
 // variables that will sort the map view
 let mapSort = [
     'Residential construction',
     'Commercial construction'];
-
-// Collect the range of each variable over the full set, so
-// we know what to color the brightest or darkest.
-let ranges = {};
-let $select = $('<select></select>')
-    .appendTo($('#variables'))
-    .on('change', function() {
-        setVariable($(this).val());
-    });
-for (var i = 0; i < mapSort.length; i++) {
-    ranges[variables[i]] = { min: Infinity, max: -Infinity };
-    // Simultaneously, build the UI for selecting different
-    // ranges
-    $('<option></option>')
-        .text(mapSort[i])
-        .attr('value', variables[i])
-        .appendTo($select);
-}
