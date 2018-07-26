@@ -46,7 +46,11 @@ neighborhoodMap.on('load', function () {
     neighborhoodMap.on('click', 'nbhd-layer', function (e) {
         new mapboxgl.Popup()
             .setLngLat(e.lngLat)
-            .setHTML(e.features[0].properties.name)
+            .setHTML('<p><b>Neighborhood name</b>: ' +
+                      e.features[0].properties.name +
+                      '</p><p><b>Total construction</b>: ' +
+                      '$'+ e.features[0].properties.total.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') +
+                      '</p>' )
             .addTo(neighborhoodMap);
     });
 
