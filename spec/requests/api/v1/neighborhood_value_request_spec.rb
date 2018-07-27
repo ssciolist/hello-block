@@ -8,7 +8,7 @@ describe 'Building Permit API summarize' do
     get '/api/v1/building_permits/neighborhoods/summarize?class=all&years=2015,2016,2017,2018'
 
     search_result = JSON.parse(response.body)
-
+  
     expect(response).to be_successful
 
     # Check for no missing data

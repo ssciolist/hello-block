@@ -17,7 +17,7 @@ neighborhoodMap.addControl(nav, 'top-right');
 neighborhoodMap.on('load', function () {
   neighborhoodMap.addSource('nbhdPolygons', {
     type: 'geojson',
-    data: 'https://raw.githubusercontent.com/ssciolist/credit_check/master/neighborhoods_w_sum.geojson'
+    data: 'http://localhost:3000/api/v1/building_permits/neighborhoods/summarize?class=all&years=2015,2016,2017,2018'
   });
 
   neighborhoodMap.addLayer({

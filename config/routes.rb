@@ -16,6 +16,9 @@ Rails.application.routes.draw do
       namespace :building_permits do
         get 'find', to: 'search#show'
         get 'summarize', to: 'sum#show'
+        namespace :neighborhoods do
+          get 'summarize', to: 'sum#show'
+        end
       end
     end
   end
