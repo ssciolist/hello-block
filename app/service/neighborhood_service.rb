@@ -6,12 +6,16 @@ class NeighborhoodService
   end
 
   def summarize
-    ActiveRecord::Base.connection.execute(sql_q)
+    if @years.length == 4
+      ActiveRecord::Base.connection.execute(sql_q(''))
+    elsif @years.length == 1
+      resultb = ActiveRecord::Base.connection.execute(sql_q(@years[0]))
+    end
   end
 
   private
 
-  def sql_q
+  def sql_q(years)
     "SELECT json_build_object(
       'type', 'FeatureCollection',
       'crs',  json_build_object('type','name', 'properties', json_build_object('name', 'EPSG:4326')
@@ -31,7 +35,7 @@ class NeighborhoodService
         INNER JOIN (
           SELECT d.nbhd_name AS name, SUM(bp.valuation) AS sum
           FROM denver_neighborhoods d, building_permits bp
-          WHERE ST_Intersects(d.geom, bp.geom)
+          WHERE ST_Intersects(d.geom, bp.geom) AND bp.permit_number LIKE '#{years}%'
           GROUP BY d.nbhd_name
           ) nbhd_sums
           ON nbhd_sums.name = d.nbhd_name;"
