@@ -40,6 +40,43 @@ $main-green: #3F9476;
   }
 }
 
+footer {
+
+  width: 90%;
+  padding-left: 7%;
+  padding-bottom: 20px;
+
+  .footer-copyright {
+    position: relative;
+    top: 10px;
+  }
+
+  img {
+    height: 30px;
+    position: relative;
+    top: -25px;
+  }
+
+  .left-footer-links {
+    padding-right: 2%;
+    position: relative;
+    top: -45px;
+  }
+}
+
+h1 {
+  font-family: $header-font;
+  text-align: center;
+  font-size: 60px;
+  padding-top: 1%;
+  padding-bottom: 2%;
+}
+
+p {
+  text-align: center;
+}
+
+// start of homepage styling. Break into its own file later
 .home-page-container {
   display: grid;
   grid-template-columns: 50% 50%;
@@ -75,39 +112,9 @@ $main-green: #3F9476;
   grid-column: 1 / 3;
   grid-row: 4 / 5;
 }
+//end of hp styling
 
-footer {
-
-  width: 90%;
-  padding-left: 7%;
-  padding-bottom: 20px;
-
-  .footer-copyright {
-    position: relative;
-    top: 10px;
-  }
-
-  img {
-    height: 30px;
-    position: relative;
-    top: -25px;
-  }
-
-  .left-footer-links {
-    padding-right: 2%;
-    position: relative;
-    top: -45px;
-  }
-}
-
-h1 {
-  font-family: $header-font;
-  text-align: center;
-  font-size: 60px;
-  padding-top: 1%;
-  padding-bottom: 2%;
-}
-
+//search page styling start
 .search-result-table {
   width: 90%;
   margin: 0 auto;
@@ -130,16 +137,118 @@ h1 {
   padding-bottom: 4%;
 }
 
-#map {
-  height: 400px;
-  width: 100%;
- }
-
 .pagination {
   margin: 0 auto;
   padding-left: 40%;
 }
+//end of search page styling
 
-p {
-  text-align: center;
+#map {
+  height: 400px;
+  width: 100%;
 }
+
+//start of data dashboard styling
+.data-dashboard-page-container {
+  display: grid;
+  grid-template-columns: 30% 30% 30%;
+  grid-gap: 20px;
+  grid-template-rows: 20% 20% 20% 20% 20%;
+  align-items: center;
+  padding-left: 3%;
+  padding-right: 3%;
+}
+
+.db-header-text {
+  grid-column: 1 / 4;
+  grid-row: 1 / 2;
+
+  h1 {
+    font-size: 40px;
+  }
+}
+
+.db-chart-container {
+  grid-column: 1 / 2;
+  grid-row: 2 / 6;
+}
+
+#neighborhood-map-container {
+  grid-column: 2 / 4;
+  grid-row: 2 / 6;
+  height: 400px;
+}
+
+.mapboxgl-popup {
+  max-width: 200px;
+}
+
+.mapboxgl-popup-content {
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.legend {
+  background-color: #fff;
+  box-shadow:0 1px 2px rgba(0, 0, 0, 0.20);
+  border-radius: 3px;
+  padding: 10px;
+  margin-bottom: 10px;
+  position: absolute;
+  left: 10px;
+  z-index: 1000;
+  .bar {
+    height: 10px;
+    width: 100%;
+    background: #c31432;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #240b36, #c31432);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #240b36, #c31432); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  }
+
+  .right-legend {
+    display: block;
+    float: right;
+  }
+}
+
+#menu {
+        background: #fff;
+        position: absolute;
+        z-index: 1;
+        bottom: 40px;
+        left: 10px;
+        border-radius: 3px;
+        width: 120px;
+        border: 1px solid rgba(0,0,0,0.4);
+        font-family: 'Open Sans', sans-serif;
+
+    a {
+        font-size: 13px;
+        color: #404040;
+        display: block;
+        margin: 0;
+        padding: 0;
+        padding: 10px;
+        text-decoration: none;
+        border-bottom: 1px solid rgba(0,0,0,0.25);
+        text-align: center;
+    }
+
+    a:last-child {
+        border: none;
+    }
+
+    a:hover {
+        background-color: #f8f8f8;
+        color: #404040;
+    }
+
+    a.active {
+        background-color: #3887be;
+        color: #ffffff;
+    }
+
+    a.active:hover {
+        background: #3074a4;
+    }
+  }

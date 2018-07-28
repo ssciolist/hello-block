@@ -3,7 +3,9 @@
   "private": true,
   "dependencies": {
     "@rails/webpacker": "3.5",
-    "chart.js": "^2.7.2"
+    "chart.js": "^2.7.2",
+    "dotenv": "^6.0.0",
+    "mapbox-gl": "0.40.1"
   },
   "devDependencies": {
     "webpack-dev-server": "2.11.2"

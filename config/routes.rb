@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root "welcome#index"
   resources :searches, only: [:index]
+  resources :data_dashboard, only: [:index]
   resources :maps, only: [:index]
   resources :about, only: [:index]
   resources :terms, only: [:index]
@@ -15,6 +16,9 @@ Rails.application.routes.draw do
       namespace :building_permits do
         get 'find', to: 'search#show'
         get 'summarize', to: 'sum#show'
+        namespace :neighborhoods do
+          get 'summarize', to: 'sum#show'
+        end
       end
     end
   end
