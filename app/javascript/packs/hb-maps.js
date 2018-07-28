@@ -1,13 +1,14 @@
+require('dotenv').config()
 import mapboxgl from 'mapbox-gl';
 
-mapboxgl.accessToken = 'pk.eyJ1IjoiYXJlbGxhbm9tZWdhbiIsImEiOiJjamp4Nmp5ZzYwd3o2M3dwYXA1Z2hpOG9jIn0.t9gtewJ5FXvJl9F6skfdPg'
+mapboxgl.accessToken = process.env.MAPBOX_KEY
 
 
 var neighborhoodMap = new mapboxgl.Map({
   container: 'neighborhood-map-container',
   style: 'mapbox://styles/mapbox/streets-v9',
   center: [-104.962262, 39.737309],
-  zoom: 10.5,
+  zoom: 10,
 });
 
 // zoom in and out button
@@ -15,9 +16,23 @@ let nav = new mapboxgl.NavigationControl();
 neighborhoodMap.addControl(nav, 'top-right');
 
 neighborhoodMap.on('load', function () {
+
   neighborhoodMap.addSource('nbhdPolygonsALL', {
     type: 'geojson',
     data: 'http://localhost:3000/api/v1/building_permits/neighborhoods/summarize?class=all&years=2015,2016,2017,2018'
+  });
+
+  neighborhoodMap.addLayer({
+    id: 'Outline only',
+    type: 'fill',
+    source: 'nbhdPolygonsALL',
+    layout: {
+      visibility: 'visible'
+    },
+    paint: {
+      'fill-color': 'rgba(0,0,80,0.2)',
+      'fill-outline-color': 'rgba(0,0,80,1)',
+    }
   });
 
   neighborhoodMap.addLayer({
