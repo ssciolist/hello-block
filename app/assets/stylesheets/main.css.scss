@@ -215,15 +215,14 @@ p {
         background: #fff;
         position: absolute;
         z-index: 1;
-        top: 10px;
-        right: 10px;
+        bottom: 40px;
+        left: 10px;
         border-radius: 3px;
         width: 120px;
         border: 1px solid rgba(0,0,0,0.4);
         font-family: 'Open Sans', sans-serif;
-    }
 
-    #menu a {
+    a {
         font-size: 13px;
         color: #404040;
         display: block;
@@ -235,20 +234,21 @@ p {
         text-align: center;
     }
 
-    #menu a:last-child {
+    a:last-child {
         border: none;
     }
 
-    #menu a:hover {
+    a:hover {
         background-color: #f8f8f8;
         color: #404040;
     }
 
-    #menu a.active {
+    a.active {
         background-color: #3887be;
         color: #ffffff;
     }
 
-    #menu a.active:hover {
+    a.active:hover {
         background: #3074a4;
     }
+  }

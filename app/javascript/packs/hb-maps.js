@@ -21,11 +21,11 @@ neighborhoodMap.on('load', function () {
   });
 
   neighborhoodMap.addLayer({
-    id: 'nbhdPolygonsALL',
+    id: 'All since 2015',
     type: 'fill',
     source: 'nbhdPolygonsALL',
     layout: {
-      visibility: 'visible'
+      visibility: 'none'
     },
     paint: {
       'fill-color': {
@@ -47,11 +47,11 @@ neighborhoodMap.on('load', function () {
   });
 
   neighborhoodMap.addLayer({
-    id: 'nbhdPolygons2015',
+    id: '2015',
     type: 'fill',
     source: 'nbhdPolygons2015',
     layout: {
-      visibility: 'visible'
+      visibility: 'none'
     },
     paint: {
       'fill-color': {
@@ -73,11 +73,11 @@ neighborhoodMap.on('load', function () {
   });
 
   neighborhoodMap.addLayer({
-    id: 'nbhdPolygons2016',
+    id: '2016',
     type: 'fill',
     source: 'nbhdPolygons2016',
     layout: {
-      visibility: 'visible'
+      visibility: 'none'
     },
     paint: {
       'fill-color': {
@@ -99,11 +99,11 @@ neighborhoodMap.on('load', function () {
   });
 
   neighborhoodMap.addLayer({
-    id: 'nbhdPolygons2017',
+    id: '2017',
     type: 'fill',
     source: 'nbhdPolygons2017',
     layout: {
-      visibility: 'visible'
+      visibility: 'none'
     },
     paint: {
       'fill-color': {
@@ -125,11 +125,11 @@ neighborhoodMap.on('load', function () {
   });
 
   neighborhoodMap.addLayer({
-    id: 'nbhdPolygons2018',
+    id: '2018',
     type: 'fill',
     source: 'nbhdPolygons2018',
     layout: {
-      visibility: 'visible'
+      visibility: 'none'
     },
     paint: {
       'fill-color': {
@@ -144,45 +144,46 @@ neighborhoodMap.on('load', function () {
       'fill-outline-color': 'rgba(0,0,80,1)',
     }
   });
-
-  // When a click event occurs on a feature in the nbhd layer, open a popup at the
-  // location of the click, with description HTML from its properties.
-    neighborhoodMap.on('click', 'nbhd-layer', function (e) {
-        new mapboxgl.Popup()
-            .setLngLat(e.lngLat)
-            .setHTML('<p><b>Neighborhood name</b>: ' +
-                      e.features[0].properties.name +
-                      '</p><p><b>Total construction</b>: ' +
-                      '$'+ e.features[0].properties.total.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') +
-                      '</p>' )
-            .addTo(neighborhoodMap);
-    });
-
-    // Change the cursor to a pointer when the mouse is over the layer.
-    neighborhoodMap.on('mouseenter', 'nbhd-layer', function () {
-        neighborhoodMap.getCanvas().style.cursor = 'pointer';
-    });
-
-    // Change it back to a pointer when it leaves.
-    neighborhoodMap.on('mouseleave', 'nbhd-layer', function () {
-        neighborhoodMap.getCanvas().style.cursor = '';
-    });
 });
 
-var toggleableLayerIds = [ 'nbhdPolygonsALL', 'nbhdPolygons2018', 'nbhdPolygons2017', 'nbhdPolygons2016', 'nbhdPolygons2015' ];
+var toggleableLayerIds = [ 'All since 2015', '2018', '2017', '2016', '2015' ];
 
 for (var i = 0; i < toggleableLayerIds.length; i++) {
     var id = toggleableLayerIds[i];
 
     var link = document.createElement('a');
     link.href = '#';
-    link.className = 'active';
+    link.className = 'inactive';
     link.textContent = id;
 
     link.onclick = function (e) {
         var clickedLayer = this.textContent;
         e.preventDefault();
         e.stopPropagation();
+
+        // Change the cursor to a pointer when the mouse is over the layer.
+        neighborhoodMap.on('mouseenter', clickedLayer, function () {
+            neighborhoodMap.getCanvas().style.cursor = 'pointer';
+        });
+
+        // Change it back to a pointer when it leaves.
+        neighborhoodMap.on('mouseleave', clickedLayer, function () {
+            neighborhoodMap.getCanvas().style.cursor = '';
+        });
+
+        // When a click event occurs on a feature in the nbhd layer, open a popup at the
+        // location of the click, with description HTML from its properties.
+          neighborhoodMap.on('click', clickedLayer, function (e) {
+              new mapboxgl.Popup()
+                  .setLngLat(e.lngLat)
+                  .setHTML('<p><b>Neighborhood name</b>: ' +
+                            e.features[0].properties.name +
+                            '</p><p><b>Total construction</b>: ' +
+                            '$'+ e.features[0].properties.total.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') +
+                            '</p>' )
+                  .addTo(neighborhoodMap);
+          });
+
         var visibility = neighborhoodMap.getLayoutProperty(clickedLayer, 'visibility');
 
         if (visibility === 'visible') {
