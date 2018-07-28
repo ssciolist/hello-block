@@ -10,10 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_22_203822) do
+ActiveRecord::Schema.define(version: 2018_07_28_170558) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "postgis"
 
   create_table "building_permits", force: :cascade do |t|
     t.datetime "date_issued"
@@ -28,8 +29,21 @@ ActiveRecord::Schema.define(version: 2018_06_22_203822) do
     t.bigint "permit_type_id"
     t.float "latitude"
     t.float "longitude"
+    t.geometry "geom", limit: {:srid=>4326, :type=>"st_point"}
     t.index ["date_issued"], name: "index_building_permits_on_date_issued"
     t.index ["permit_type_id"], name: "index_building_permits_on_permit_type_id"
+  end
+
+  create_table "denver_neighborhoods", id: false, force: :cascade do |t|
+    t.text "string_wkb"
+    t.integer "nbhd_id", limit: 2
+    t.string "nbhd_name", limit: 40
+    t.geometry "geom", limit: {:srid=>4326, :type=>"multi_polygon"}
+  end
+
+  create_table "neighborhoods", force: :cascade do |t|
+    t.string "name"
+    t.geometry "geom", limit: {:srid=>4326, :type=>"multi_polygon"}
   end
 
   create_table "permit_types", force: :cascade do |t|
