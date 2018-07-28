@@ -1,3 +1,4 @@
+require 'rgeo/geo_json'
 class Neighborhood < ApplicationRecord
   validates :name, :geom, presence: true
 
