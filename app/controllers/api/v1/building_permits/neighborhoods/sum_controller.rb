@@ -1,27 +1,18 @@
-require 'rgeo/geo_json'
-
 class Api::V1::BuildingPermits::Neighborhoods::SumController < ApplicationController
   def show
-    # require 'pry'; binding.pry
-    # nbhd_service = NeighborhoodService.new(permit_class, years_array)
-    # render body: nbhd_service.summarize.to_json.delete("\\")[23..-4]
-    var = Neighborhood.summarize_valuation(2018)
-    array = []
-
-    var.each do |x|
-      feature = RGeo::GeoJSON::Feature.new(x.geom, x.id, {name: x.name, total: x.sum})
-      array << feature
-    end
-
-    collection = RGeo::GeoJSON::FeatureCollection.new(array)
-
-    render json: RGeo::GeoJSON.encode(collection)
+    render json: NeighborhoodPresenter.new(permit_class, year).geojson_summary
   end
 
   private
 
-  def years_array
-    params[:years].split(',')
+  def year
+    ## current design allows for all years or one year. Would be good to change for 2-3 year selection
+    array = params[:years].split(',')
+    if array.length == 4
+      ''
+    else
+      array[0].to_i
+    end
   end
 
   def permit_class
