@@ -1,8 +1,9 @@
 class Api::V1::BuildingPermits::Neighborhoods::SumController < ApplicationController
   def show
-    nbhd_service = NeighborhoodService.new(permit_class, years_array)
+    # nbhd_service = NeighborhoodService.new(permit_class, years_array)
+    # render body: nbhd_service.summarize.to_json.delete("\\")[23..-4]
 
-    render body: nbhd_service.summarize.to_json.delete("\\")[23..-4]
+    render json: Neighborhood.summarize_valuation(2018)
   end
 
   private

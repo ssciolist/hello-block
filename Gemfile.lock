@@ -250,6 +250,8 @@ GEM
     rgeo-activerecord (6.0.0)
       activerecord (~> 5.0)
       rgeo (~> 1.0)
+    rgeo-geojson (2.0.0)
+      rgeo (~> 1.0)
     roo (2.7.1)
       nokogiri (~> 1)
       rubyzip (~> 1.1, < 2.0.0)
@@ -375,6 +377,7 @@ DEPENDENCIES
   puma (~> 3.11)
   rack-mini-profiler
   rails (~> 5.2.0)
+  rgeo-geojson
   roo
   roo-xls
   rspec-rails
