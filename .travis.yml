@@ -17,5 +17,3 @@ addons:
 before_script:
   - sudo apt-get -qq update
   - sudo apt-get install -y postgresql-9.6-postgis-2.4
-  - psql -U postgres -c 'create database test'
-  - psql -U postgres -d test -c 'create extension postgis'
