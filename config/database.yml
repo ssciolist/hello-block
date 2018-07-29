@@ -85,3 +85,5 @@ production:
   database: hello-block_production
   username: hello-block
   password: <%= ENV['HELLO-BLOCK_DATABASE_PASSWORD'] %>
+  production:
+  url: <%= ENV.fetch('DATABASE_URL', '').sub(/^postgres/, "postgis") %>
