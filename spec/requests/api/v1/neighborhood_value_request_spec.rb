@@ -2,13 +2,14 @@ require 'rails_helper'
 
 describe 'Building Permit API summarize' do
   it 'can group permits by neighborhood and return geojson with value sum' do
+
     type = PermitType.create(name: 'Single family, detached', p_type: "003")
     create_list(:building_permit, 5, permit_type: type)
 
     get '/api/v1/building_permits/neighborhoods/summarize?class=all&years=2015,2016,2017,2018'
 
     search_result = JSON.parse(response.body)
-  
+
     expect(response).to be_successful
 
     # Check for no missing data

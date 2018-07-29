@@ -23,4 +23,5 @@ class BuildingPermit < ApplicationRecord
     .select('SUM(valuation) AS total')
   end
 
+
 end
