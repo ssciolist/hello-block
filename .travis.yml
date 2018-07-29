@@ -7,3 +7,14 @@ script:
 env:
   global:
   - secure: fvDDe1G193U3wF8wHyNugf8BAnamvxmlMsq7RD7iDX7OjML/A+DNR3eueotJXmxa4fiN9SitkXNWS9/pwe8rZxc9g3DMZzaGuXJPswvw3sPbTtBcwfsxVtDEOGLC6ISjXXyiVGC0+uYwdtgvX7VUQowdlUYh/l0JkFO5UqWCzFXhDyVkaFEmK1Xp1ArfXaT5bEXSK5A6gX4V84PFosz/XFZQzmSr9izpPRKl8HoDku2XaU1yV0L/c8jaEwWgI1BiYdGBfQD/9g5r7LloW9Lk3UfX/ST7XJM2o6VcHKmtvI3VBVpJnZ0sz7rKA+GyUtPuHhMw/pBC9d8eOXdvFJQ6TC067KcorpoUr8TpvcrCGeYWQBWW2IFuoG4HiVqd2kdJw6olSFUdnFemX5fs+Z/3foi0fmtNT0J0ZAKlv2jbrLTrVPhtbwE7/U+Z0QHK1kWpAgGA870DFJTfBxWI+QSR3Xva0iFxJeowYPLZqQVbrGSc6U35wjr6WrEx/CqXvLOoieRGPuSj+cF6TEBgWdtZALR+3OhOVKV3acSLvRH0Nh0K+KjiLjDWx88y7tkSncMqfF/tx39O7OXQhK+3VMuzDtT/fd3U0eAGidzO3vXrQHZcsHCwPaZ9xc8oGAJkYJEeEV2jJB3WQsDoYiI7N4orl8dGbnbtsuoO71RclXM6bAY=
+
+dist: trusty
+
+services:
+  - postgresql
+
+addons:
+  postgresql: 10.4
+
+before_script:
+  - psql -U postgres -c "create extension postgis"

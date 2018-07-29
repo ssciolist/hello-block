@@ -1,14 +1,14 @@
+
+
 class Api::V1::BuildingPermits::Neighborhoods::SumController < ApplicationController
   def show
-    nbhd_service = NeighborhoodService.new(permit_class, years_array)
-
-    render body: nbhd_service.summarize.to_json.delete("\\")[23..-4]
+    render json: NeighborhoodPresenter.new(permit_class, years).geojson_summary
   end
 
   private
 
-  def years_array
-    params[:years].split(',')
+  def years
+    array = params[:years].split(',').map {|year| "#{year}%" }
   end
 
   def permit_class
