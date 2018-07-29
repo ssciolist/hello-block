@@ -19,7 +19,7 @@ neighborhoodMap.on('load', function () {
 
   neighborhoodMap.addSource('nbhdPolygonsALL', {
     type: 'geojson',
-    data: 'http://localhost:3000/api/v1/building_permits/neighborhoods/summarize?class=all&years=2015,2016,2017,2018'
+    data: 'https://hello-block.herokuapp.com/api/v1/building_permits/neighborhoods/summarize?class=all&years=2015,2016,2017,2018'
   });
 
   neighborhoodMap.addLayer({
@@ -58,7 +58,7 @@ neighborhoodMap.on('load', function () {
 
   neighborhoodMap.addSource('nbhdPolygons2015', {
     type: 'geojson',
-    data: 'http://localhost:3000/api/v1/building_permits/neighborhoods/summarize?class=all&years=2015'
+    data: 'https://hello-block.herokuapp.com/api/v1/building_permits/neighborhoods/summarize?class=all&years=2015'
   });
 
   neighborhoodMap.addLayer({
@@ -84,7 +84,7 @@ neighborhoodMap.on('load', function () {
 
   neighborhoodMap.addSource('nbhdPolygons2016', {
     type: 'geojson',
-    data: 'http://localhost:3000/api/v1/building_permits/neighborhoods/summarize?class=all&years=2016'
+    data: 'https://hello-block.herokuapp.com/api/v1/building_permits/neighborhoods/summarize?class=all&years=2016'
   });
 
   neighborhoodMap.addLayer({
@@ -110,7 +110,7 @@ neighborhoodMap.on('load', function () {
 
   neighborhoodMap.addSource('nbhdPolygons2017', {
     type: 'geojson',
-    data: 'http://localhost:3000/api/v1/building_permits/neighborhoods/summarize?class=all&years=2017'
+    data: 'https://hello-block.herokuapp.com/api/v1/building_permits/neighborhoods/summarize?class=all&years=2017'
   });
 
   neighborhoodMap.addLayer({
@@ -136,7 +136,7 @@ neighborhoodMap.on('load', function () {
 
   neighborhoodMap.addSource('nbhdPolygons2018', {
     type: 'geojson',
-    data: 'http://localhost:3000/api/v1/building_permits/neighborhoods/summarize?class=all&years=2018'
+    data: 'https://hello-block.herokuapp.com/api/v1/building_permits/neighborhoods/summarize?class=all&years=2018'
   });
 
   neighborhoodMap.addLayer({
