@@ -15,5 +15,4 @@ addons:
   postgresql: 10.4
 
 before_script:
-  - sudo apt-get -qq update
-  - sudo apt-get install -y postgresql-9.6-postgis-2.4
+  - psql -U postgres -c "create extension postgis"
