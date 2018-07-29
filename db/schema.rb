@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_28_170558) do
+ActiveRecord::Schema.define(version: 2018_07_29_035047) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,13 +32,6 @@ ActiveRecord::Schema.define(version: 2018_07_28_170558) do
     t.geometry "geom", limit: {:srid=>4326, :type=>"st_point"}
     t.index ["date_issued"], name: "index_building_permits_on_date_issued"
     t.index ["permit_type_id"], name: "index_building_permits_on_permit_type_id"
-  end
-
-  create_table "denver_neighborhoods", id: false, force: :cascade do |t|
-    t.text "string_wkb"
-    t.integer "nbhd_id", limit: 2
-    t.string "nbhd_name", limit: 40
-    t.geometry "geom", limit: {:srid=>4326, :type=>"multi_polygon"}
   end
 
   create_table "neighborhoods", force: :cascade do |t|
