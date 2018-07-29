@@ -14,6 +14,8 @@ gem 'rgeo-geojson'
 gem 'puma', '~> 3.11'
 # redis for caching
 gem 'redis-rails'
+#actionpack for page caching. Allows for poss auth in later iterations
+gem 'actionpack-action_caching'
 # Use SCSS for stylesheets
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
