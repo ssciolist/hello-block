@@ -12,6 +12,8 @@ gem 'activerecord-postgis-adapter'
 gem 'rgeo-geojson'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
+# redis for caching
+gem 'redis-rails'
 # Use SCSS for stylesheets
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
