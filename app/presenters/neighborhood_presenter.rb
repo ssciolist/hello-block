@@ -10,7 +10,6 @@ class NeighborhoodPresenter
     RGeo::GeoJSON.encode(geojson_feature_collection)
   end
 
-
   def geojson_feature_collection
     hoods_w_totals = Neighborhood.summarize_valuation(@year)
     feature_array = []

@@ -22,6 +22,4 @@ class BuildingPermit < ApplicationRecord
     .where("permit_number LIKE '#{year}-#{permit_class}%'")
     .select('SUM(valuation) AS total')
   end
-
-
 end

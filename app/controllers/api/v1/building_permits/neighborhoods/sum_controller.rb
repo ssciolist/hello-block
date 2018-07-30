@@ -1,6 +1,6 @@
-
-
 class Api::V1::BuildingPermits::Neighborhoods::SumController < ApplicationController
+  caches_action :show, expires_in: 100.hour, :cache_path => Proc.new {|c| c.request.url }
+
   def show
     render json: NeighborhoodPresenter.new(permit_class, years).geojson_summary
   end
@@ -13,5 +13,9 @@ class Api::V1::BuildingPermits::Neighborhoods::SumController < ApplicationContro
 
   def permit_class
     params[:class]
+  end
+
+  def person_params
+    params.permit(:class, :years)
   end
 end
