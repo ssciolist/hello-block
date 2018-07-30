@@ -7,6 +7,7 @@ desc 'update the permit table'
 task update_permit_table: :environment do
 
   date = Date.today.strftime('%Y%m%d')
+  root = Rails.root.to_s
   files_in_system = ScrapedFile.all.pluck(:url)
   scraper = Scraper.new
   excel_converter = ExcelConverter.new
@@ -14,7 +15,8 @@ task update_permit_table: :environment do
   seeder = Seeder.new
 
   unless scraper.find_unscraped_files(files_in_system).empty?
-    date_directory = Dir.mkdir("/Users/meganarellano/turing/3module/projects/hello-block/tmp/#{date}")
+    date_directory = Dir.mkdir(root + "/tmp/#{date}")
+    Dir.mkdir(root + "/tmp/#{date}/to_process")
     files_to_process = "/Users/meganarellano/turing/3module/projects/hello-block/tmp/#{date}/to_process"
 
     unscraped_files = scraper.find_unscraped_files(files_in_system)
