@@ -2,6 +2,7 @@ class BuildingPermit < ApplicationRecord
   belongs_to :permit_type
   geocoded_by :full_street_address
   after_validation :geocode
+  after_save :set_geom
 
   validates_presence_of :date_issued, :permit_number, :address,
                         :valuation, :owner_name, :contractor_name
@@ -21,5 +22,11 @@ class BuildingPermit < ApplicationRecord
     includes(:permit_type)
     .where("permit_number LIKE '#{year}-#{permit_class}%'")
     .select('SUM(valuation) AS total')
+  end
+
+  private
+
+  def set_geom
+    self.geom = "POINT(#{self.longitude} #{self.latitude})"
   end
 end

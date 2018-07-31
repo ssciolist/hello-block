@@ -6,7 +6,7 @@ class CsvCleaner
   end
 
   def file_root
-    '/Users/meganarellano/turing/3module/projects/hello-block/tmp'
+    Rails.root.to_s + '/tmp'
   end
 
   def row_containing_permit?(row)
