@@ -1,22 +1,62 @@
 <div class="data-dashboard-page-container">
-  <div class="db-header-text">
+  <div >
     <h1>Denver Construction by the numbers</h1>
   </div>
 
-  <div class="db-chart-container">
-    <canvas id="TBD-chart"></canvas>
+  <div class="row">
+      <div class="col-md-6">
+          <div class="card">
+              <div class="card-body">
+                  <canvas id="resConstruction"></canvas>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-6">
+          <div class="card">
+              <div class="card-body">
+                  <canvas id="commConstruction"></canvas>
+              </div>
+          </div>
+      </div>
   </div>
 
-  <div id="neighborhood-map-container">
-    <nav id="menu"></nav>
-
-    <div class='legend'>
-      <div><b>Planned construction value</b></div>
-      <div class='bar'></div>
-      <div><span class='left-legend'>Less<span><span class='right-legend'>More</span></div>
+  <div class="row">
+    <div class="db-heading">
+      <h2>Figures by neighborhood</h2>
     </div>
-
   </div>
+
+
+  <div class="row">
+      <div class="col-md-4">
+          <div class="card">
+              <div class="db-card-left card-body">
+                  <h4><b>Most growth in planned construction</b></h4>
+                  <canvas id="topHoods"></canvas>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-8">
+          <div class="card">
+              <div class="card-body">
+                <h4><b>Total Value of Planned Construction</b></h4>
+                <div id="neighborhood-map-container">
+                  <nav id="menu"></nav>
+
+                  <div class='legend'>
+                    <div><b>Planned construction value</b></div>
+                    <div class='bar'></div>
+                    <div><span class='left-legend'>Less<span><span class='right-legend'>More</span></div>
+                  </div>
+
+                </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+
 </div>
 
 <%= javascript_pack_tag 'hb-maps' %>
+<%= javascript_pack_tag 'charts' %>

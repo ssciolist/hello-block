@@ -38,7 +38,7 @@ let resChart = new Chart(residential, {
         title: {
           display: true,
           text: 'Residential Construction Planned in Denver',
-          fontSize: 25,
+          fontSize: 18,
           fontFamily: 'Helvetica',
         },
         scales: {
@@ -88,7 +88,7 @@ let commChart = new Chart(commercial, {
       title: {
         display: true,
         text: 'Commercial Construction Planned in Denver',
-        fontSize: 25,
+        fontSize: 18,
         fontFamily: 'Helvetica',
       },
         scales: {
@@ -100,6 +100,40 @@ let commChart = new Chart(commercial, {
                   display: true,
                   labelString: "Dollars"
                 }
+            }]
+        }
+    }
+});
+
+let topHoods = document.getElementById("topHoods");
+
+// This would be the fetch call to get dynamic data
+// function drawCommChart() {
+//   return fetch(`https://hello-block.herokuapp.com/api/v1/building_permits/summarize?class=COMMCON&years=2015,2016,2017,2018&group=years`)
+//   .then((response) => response.json())
+//   .then((rawData) => {
+//     commChart.data.datasets[0].data = [rawData['2015'], rawData['2016'], rawData['2017'], rawData['2018']]
+//     commChart.update()
+//   })
+// }
+
+var stackedBar = new Chart(topHoods, {
+    type: 'horizontalBar',
+    data: {
+      labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
+      datasets: [{
+          label: "Average annual growth rate (percent)",
+          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+          data: [2478,5267,734,784,433]
+        }]
+    },
+    options: {
+        scales: {
+            xAxes: [{
+                stacked: true
+            }],
+            yAxes: [{
+                stacked: true
             }]
         }
     }
