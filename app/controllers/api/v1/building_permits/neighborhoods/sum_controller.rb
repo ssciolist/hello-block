@@ -14,8 +14,4 @@ class Api::V1::BuildingPermits::Neighborhoods::SumController < ApplicationContro
   def permit_class
     params[:class]
   end
-
-  def person_params
-    params.permit(:class, :years)
-  end
 end
