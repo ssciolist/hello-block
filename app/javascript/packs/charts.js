@@ -111,7 +111,7 @@ let topHoods = document.getElementById("topHoods");
 
 // This would be the fetch call to get dynamic data
 function drawTopHoodChart() {
-  return fetch(`http://localhost:3000/api/v1/building_permits/neighborhoods/annual_percentage?years=2015,2016,2017,2018`)
+  return fetch(`https://hello-block.herokuapp.com/api/v1/building_permits/neighborhoods/annual_percentage?years=2015,2016,2017,2018`)
   .then((response) => response.json())
   .then((rawData) => {
     stackedBar.data.labels = Object.keys(rawData).slice(0,9)
