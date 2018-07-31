@@ -142,15 +142,32 @@ p {
 }
 
 // //start of data dashboard styling
-.data-dashboard-page-container {
 
+h2 {
+  font-family: $header-font;
+  font-size: 40px;
 }
 
+.db-heading {
+  padding-left: 30%;
+  padding-bottom: 3%;
+}
+
+.db-card-left {
+  h4 {
+    text-align: center;
+  }
+}
+
+h4 {
+  font-family: Helvetica;
+  color: #666666;
+  font-size: 18px;
+}
 
 #neighborhood-map-container {
-  // grid-column: 2 / 4;
-  // grid-row: 2 / 6;
   height: 400px;
+  margin-right: 5%;
 }
 
 .mapboxgl-popup {
