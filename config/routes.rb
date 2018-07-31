@@ -18,6 +18,7 @@ Rails.application.routes.draw do
         get 'summarize', to: 'sum#show'
         namespace :neighborhoods do
           get 'summarize', to: 'sum#show'
+          get 'annual_percentage', to: 'sum#percent_change'
         end
       end
     end
