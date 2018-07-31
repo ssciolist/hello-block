@@ -8,7 +8,7 @@
   </div>
 
   <div class="hp-search">
-    <div class="row">
+    <div class="form-actions">
       <%= form_tag(searches_path, method: 'get', class: 'home-search center-block') do %>
 
       <%= text_field_tag :search, params[:search], placeholder: 'Street, City State, Zip', class: 'form-control form-control-lg', id: 'autocomplete', onFocus: "geolocate()" %>

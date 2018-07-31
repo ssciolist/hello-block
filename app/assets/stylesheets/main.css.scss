@@ -96,6 +96,17 @@ p {
   margin: auto;
 }
 
+.form-actions {
+    margin: 0;
+    background-color: transparent;
+    text-align: center;
+    .btn {
+      margin-top: 2%;
+    }
+}
+
+
+
 //search page styling start
 .search-result-table {
   width: 90%;
