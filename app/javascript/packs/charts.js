@@ -38,7 +38,7 @@ let resChart = new Chart(residential, {
         title: {
           display: true,
           text: 'Residential Construction Planned in Denver',
-          fontSize: 25,
+          fontSize: 18,
           fontFamily: 'Helvetica',
         },
         scales: {
@@ -88,7 +88,7 @@ let commChart = new Chart(commercial, {
       title: {
         display: true,
         text: 'Commercial Construction Planned in Denver',
-        fontSize: 25,
+        fontSize: 18,
         fontFamily: 'Helvetica',
       },
         scales: {

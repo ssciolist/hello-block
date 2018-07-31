@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:700');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:700,100');
 @import url('https://fonts.googleapis.com/css?family=Yrsa:700');
 
 $title-font: 'Montserrat', sans-serif;
@@ -7,6 +7,7 @@ $main-green: #3F9476;
 
 .title {
   font-family: $title-font;
+  font-weight: 700;
   font-size: 50px;
   color: white;
 }
@@ -68,8 +69,6 @@ h1 {
   font-family: $header-font;
   text-align: center;
   font-size: 60px;
-  padding-top: 1%;
-  padding-bottom: 2%;
 }
 
 p {
@@ -77,42 +76,25 @@ p {
 }
 
 // start of homepage styling. Break into its own file later
-.home-page-container {
-  display: grid;
-  grid-template-columns: 50% 50%;
-  grid-gap: 20px;
-  grid-template-rows: 20% 20% 20% 20% 20%;
-  align-items: center;
-  padding-left: 3%;
-  padding-right: 3%;
+.hp-intro {
+  padding-left: 15%;
+  width: 85%;
+  padding-bottom: 3%;
+  p {
+    // text-align: left;
+    font-family: $title-font;
+    font-weight: 100;
+    .bigtext {
+      font-size: 24px;
+      font-family: $title-font;
+    }
+  }
 }
 
-.hp-explainer-text {
-  grid-column: 1 / 3;
-  grid-row: 1 / 2;
+.hp-search {
+  width: 60%;
+  margin: auto;
 }
-
-.hp-res-chart-container {
-  grid-column: 1 / 2;
-  grid-row: 2 / 4;
-}
-
-.hp-comm-chart-container {
-  grid-column: 2 / 3;
-  grid-row: 2 / 4;
-}
-
-.home-search {
-  text-align: center;
-  grid-column: 1 / 3;
-  grid-row: 5 / 6;
-}
-
-.hp-do-more-text {
-  grid-column: 1 / 3;
-  grid-row: 4 / 5;
-}
-//end of hp styling
 
 //search page styling start
 .search-result-table {
@@ -148,34 +130,15 @@ p {
   width: 100%;
 }
 
-//start of data dashboard styling
+// //start of data dashboard styling
 .data-dashboard-page-container {
-  display: grid;
-  grid-template-columns: 30% 30% 30%;
-  grid-gap: 20px;
-  grid-template-rows: 20% 20% 20% 20% 20%;
-  align-items: center;
-  padding-left: 3%;
-  padding-right: 3%;
+
 }
 
-.db-header-text {
-  grid-column: 1 / 4;
-  grid-row: 1 / 2;
-
-  h1 {
-    font-size: 40px;
-  }
-}
-
-.db-chart-container {
-  grid-column: 1 / 2;
-  grid-row: 2 / 6;
-}
 
 #neighborhood-map-container {
-  grid-column: 2 / 4;
-  grid-row: 2 / 6;
+  // grid-column: 2 / 4;
+  // grid-row: 2 / 6;
   height: 400px;
 }
 

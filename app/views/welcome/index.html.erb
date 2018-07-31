@@ -1,30 +1,25 @@
-<div class="home-page-container">
+<div>
 
-  <div class="hp-explainer-text">
-    <h1>Denver is changing rapidly. Here's what construction number show:</h1>
+  <div class="hp-intro">
+    <h1>Denver is changing rapidly.</h1>
+    <p><span class="bigtext">This project tells you how.   </span>Using building permit data, we can learn what someone is building and how much it's worth, according to the value of construction materials and labor.</p>
+    <br>
+    <p>Check out <%= link_to 'city-wide maps and charts', data_dashboard_index_path %> or search what's happening near you:</p>
   </div>
 
-  <div class="hp-res-chart-container">
-    <canvas id="resConstruction"></canvas>
-  </div>
-
-  <div class="hp-comm-chart-container">
-    <canvas id="commConstruction"></canvas>
-  </div>
-
-  <div class="hp-do-more-text">
-    <h1>Check out <%= link_to 'maps and more', data_dashboard_index_path %> or search what's happening near you:</h1>
-  </div>
-
-  <%= form_tag(searches_path, method: 'get', class: 'home-search center-block') do %>
+  <div class="hp-search">
+    <div class="row">
+      <%= form_tag(searches_path, method: 'get', class: 'home-search center-block') do %>
 
       <%= text_field_tag :search, params[:search], placeholder: 'Street, City State, Zip', class: 'form-control form-control-lg', id: 'autocomplete', onFocus: "geolocate()" %>
       <%= hidden_field_tag :distance , 1 %>
       <%= hidden_field_tag :days , 30 %>
 
       <%= submit_tag 'Search', :name => nil, class: 'btn btn-primary mb-2' %>
-  <% end %>
+      <% end %>
+    </div>
+  </div>
+
 
 </div>
 <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV["GOOGLE_MAPS_API_KEY"]}&libraries=places", async: true, defer: true %>
-<%= javascript_pack_tag 'charts' %>
