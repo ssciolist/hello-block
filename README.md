@@ -1,8 +1,7 @@
 # Hello Block
 
-Hello Block is a Ruby on Rails application designed to serve [real-world data](https://www.denvergov.org/content/denvergov/en/denver-development-services/help-me-find-/building-permits.html) about the changing landscape of Denver, as illustrated by its new construction. Using this application, you can search an address in the Denver metro area and return the estimated dollar amount of new construction in your area. If you're interested in tracking the result, users can sign up to recieve weekly emails about new construction in their area.
+Hello Block was a Ruby on Rails application designed to serve real-world data about the changing landscape of Denver, as illustrated by its new construction. However, in the years since its inception, the city of Denver changed the way the permit data was stored, which made impossible for me to continue scraping the data. A perfect example of Denver's changing landscape, you could say. Using this application, one was able to search an address in the Denver metro area and return the estimated dollar amount of new construction in your area. If you were interested in tracking the result, users were able sign up to recieve weekly emails about new construction in their area.
 
-See it for yourself at [hello-block.herokuapp.com](https://hello-block.herokuapp.com/)
 
 ## Setup
 
