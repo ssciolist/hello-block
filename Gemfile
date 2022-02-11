@@ -11,7 +11,7 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'activerecord-postgis-adapter'
 gem 'rgeo-geojson'
 # Use Puma as the app server
-gem 'puma', '~> 3.11'
+gem 'puma', '~> 4.3'
 #actionpack for page caching. Allows for poss auth in later iterations
 gem 'actionpack-action_caching'
 # Use SCSS for stylesheets
